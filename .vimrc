@@ -33,4 +33,4 @@ map <F6> :NERDTreeToggle
 
 :nmap <S-tab> :tabprevious<CR>
 :nmap <tab> :tabnext<CR>
-
+nesto sam promjenio
