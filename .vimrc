@@ -28,8 +28,7 @@ set nowrap         " don't wrap lines
 syntax on           " syntax highlighing
 
 set mouse=a
-
-map <F6> :NERDTreeToggle
+map <F6> :NERDTreeToggle<CR>
 
 :nmap <S-tab> :tabprevious<CR>
 :nmap <tab> :tabnext<CR>
