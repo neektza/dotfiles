@@ -1,30 +1,40 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
+	ignore = dirty
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/Command-T
+	ignore = dirty
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
+	ignore = dirty
 [submodule "bundle/repeat"]
 	path = bundle/repeat
 	url = https://github.com/tpope/vim-repeat
+	ignore = dirty
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+	ignore = dirty
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = https://github.com/chrismetcalf/vim-yankring
+	ignore = dirty
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim
+	ignore = dirty
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim
+	ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
+	ignore = dirty
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = https://github.com/tpope/vim-rails.git
+	ignore = dirty
