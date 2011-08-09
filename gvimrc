@@ -8,6 +8,23 @@ filetype plugin indent on
 set nocompatible
 set modelines=0
 
+" most importantly appearance
+if has("gui_running")
+	  set guioptions-=T
+		  set t_Co=256
+			  set background=dark
+				  colorscheme peaksea
+					  set nonu
+					else
+						  colorscheme zellner
+							  set background=dark
+
+								  set nonu
+								endif
+
+" gvim specific
+set vb t_vb=
+
 " tab is 2 spaces
 set tabstop=2
 set shiftwidth=2
