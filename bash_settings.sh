@@ -1,13 +1,10 @@
 #!/bin/bash
 
 # Some commons
-export GIT_EDITOR=vim
-#export RAILS_ENV=development_emobile #only one vt needs this
 alias ack='ack -ri'
 alias grep='grep -ri'
 
-EDITOR=vim
-export EDITOR
+export EDITOR=vim
 
 # carr's
 # TODO da gleda ako je na linuxu da bude gedit, ako je na macu textmate, ako je na windowsima da pomoli Ocenas
