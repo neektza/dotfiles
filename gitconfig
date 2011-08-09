@@ -1,0 +1,25 @@
+[user]
+	name = Nikica Jokic
+	email = nikica.jokic@infinum.hr
+[core]
+	editor = vim
+
+
+[core]
+	autocrlf = true
+
+[color]
+	status = auto
+  diff = auto
+	branch = auto
+
+[alias]
+	a = add
+	au = add -u
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	df = diff
+	lg = log -p
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
