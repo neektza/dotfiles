@@ -50,3 +50,6 @@
 	path = bundle/textobj-user-ruby
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
 	ignore = dirty
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = https://github.com/tsaleh/vim-matchit.git

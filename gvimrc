@@ -62,7 +62,9 @@ set undofile
 
 " wrapping
 set nowrap
+set linebreak
 "set textwidth=79
+"set nolinebreak
 set formatoptions=qrn1
 "set colorcolumn=85
 
@@ -104,7 +106,7 @@ nnoremap <leader>v V`]
 
 " f keys
 nmap <F3> :set list!<cr>
-nnoremap <F4> :set wrap!<cr>
+nnoremap <F4> :set nolist wrap!<cr>
 
 " fold html tag
 nnoremap <leader>ft Vatzf
@@ -112,12 +114,10 @@ nnoremap <leader>ft Vatzf
 " window, tab and split screen navigation
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h <C-w>s<C-w>l
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-nnoremap <A-h> :tabprev<cr>
-nnoremap <A-l> :tabnext<cr>
+noremap <C-j> <C-w>w
+noremap <C-k> <C-w>W
+nnoremap <A-k> :tabprev<cr>
+nnoremap <A-j> :tabnext<cr>
 nnoremap <leader>n :tabnew<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <A-1> 1gt
@@ -146,6 +146,9 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
+
+" command-t
+nnoremap <leader>fl :CommandTFlush<cr>
 
 " nerdtree
 noremap <F1> :NERDTreeToggle<cr>
