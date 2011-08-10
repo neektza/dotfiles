@@ -5,9 +5,7 @@ alias ack='ack -ri'
 alias grep='grep -ri'
 
 # Speedups
-alias svnrm='find . -name \'*.svn*\' | xargs rm -rf'
-
-
+alias svnrm='find . -name *.svn* | xargs rm -rf'
 
 #########
 # RAILS #
