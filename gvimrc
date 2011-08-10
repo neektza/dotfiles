@@ -32,18 +32,19 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set listchars=tab:▸\ ,eol:¬
-nmap <leader>l :set list!<cr>
 
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
-set backup                        " enable backups
+set nobackup
+set nowritebackup
+set noswapfile
 
 " TODO: comments
 set encoding=utf-8
-set scrolloff=3
+set scrolloff=10
 set autoindent
 set showmode
 set showcmd
@@ -60,10 +61,14 @@ set relativenumber
 set undofile
 
 " wrapping
-set wrap
+set nowrap
 "set textwidth=79
 set formatoptions=qrn1
 "set colorcolumn=85
+
+" navigation
+"nnoremap ' `
+"nnoremap ` '
 
 " search/move
 nnoremap / /\v
@@ -93,19 +98,28 @@ nnoremap k gk
 " leader
 let mapleader = ","
 
-" leader mappings
+" misc leader mappings
+nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYGVIMRC<cr>
+nnoremap <leader>v V`]
+
+" f keys
+nmap <F3> :set list!<cr>
+nnoremap <F4> :set wrap!<cr>
 
 " fold html tag
 nnoremap <leader>ft Vatzf
 
-" tab and split screen navigation
+" window, tab and split screen navigation
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h <C-w>s<C-w>l
-nnoremap <A-k> <C-w>W
-nnoremap <A-j> <C-w>w
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 nnoremap <A-h> :tabprev<cr>
 nnoremap <A-l> :tabnext<cr>
 nnoremap <leader>n :tabnew<cr>
+nnoremap <leader>q :q<cr>
 nnoremap <A-1> 1gt
 nnoremap <a-2> 2gt
 nnoremap <A-3> 3gt
@@ -116,6 +130,11 @@ nnoremap <A-7> 7gt
 nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10g
+
+" iMacfiy
+nnoremap <A-w> :q<cr>
+nnoremap <A-q> :qall<cr>
+nnoremap <A-s> :w<cr>
 
 " ack
 nnoremap <leader>a :Ack
@@ -129,10 +148,8 @@ nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
 
 " nerdtree
-noremap <F2> :NERDTreeToggle<cr>
-noremap <F3> :NERDTreeFind<cr>
-inoremap <F2> <esc>:NERDTreeToggle<cr>
-inoremap <F3> <esc>:NERDTreeFind<cr>
+noremap <F1> :NERDTreeToggle<cr>
+inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
 au Filetype nerdtree setlocal nolist
 
