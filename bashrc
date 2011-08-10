@@ -4,13 +4,17 @@
 alias ack='ack -ri'
 alias grep='grep -ri'
 
+# Speedups
+alias svnrm='find . -name \'*.svn*\' | xargs rm -rf'
+
 export EDITOR=vim
+#export MYVIMRC=~/.vim/gvimrc
 
 # carr's
 # TODO da gleda ako je na linuxu da bude gedit, ako je na macu textmate, ako je na windowsima da pomoli Ocenas
-alias g='mate'
-alias n='nautilus'
-alias q='exit'
+#alias g='mate'
+#alias n='nautilus'
+#alias q='exit'
 alias vz1='ssh www-data@vz1.infinum.hr'
 alias vz2='ssh www-data@vz2.infinum.hr'
 alias vz3='ssh www-data@vz3.infinum.hr'
@@ -32,7 +36,6 @@ alias runjad='~/Programs/WTK2.5.2/bin/emulator'
 # git #
 #######
 # source git-completion.bash
-
 alias gl='git pull'
 alias gp='git push'
 alias gd='git deploy'
@@ -41,21 +44,21 @@ alias gca='git commit -v -a'
 alias gb='git branch -v'
 alias ga='git add'
 
-function gco {
-  if [ -z "$1" ]; then
-    git checkout master
-  else
-    git checkout $1
-  fi
-}
-
-function st {
-  if [ -d ".svn" ]; then
-    svn status
-  else
-    git status
-  fi
-}
+#function gco {
+#  if [ -z "$1" ]; then
+#    git checkout master
+#  else
+#    git checkout $1
+#  fi
+#}
+#
+#function st {
+#  if [ -d ".svn" ]; then
+#    svn status
+#  else
+#    git status
+#  fi
+#}
 
 #######
 # SVN #
