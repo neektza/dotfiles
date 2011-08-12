@@ -7,6 +7,8 @@ alias grep='grep -ri'
 # Speedups
 alias svnrm='find . -name *.svn* | xargs rm -rf'
 
+alias worky='cd /media/sandbox/workspace'
+
 #########
 # RAILS #
 #########
