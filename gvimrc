@@ -179,3 +179,5 @@ nnoremap <leader>fl :CommandTFlush<cr>
 " go to work directory
 command Store :exec "chdir /media/sandbox/workspace/meteor-prototype-catalog-apis"
 command Catalog :exec "chdir /media/sandbox/workspace/emobile-catalog"
+
+" s-tab
