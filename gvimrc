@@ -11,7 +11,6 @@ set modelines=0
 " gvim specific
 set winaltkeys=no
 
-
 " apperance
 if has("gui_running")
   set guioptions-=T
@@ -71,6 +70,8 @@ set formatoptions=qrn1
 " navigation
 "nnoremap ' `
 "nnoremap ` '
+nnoremap <C-a> ^
+nnoremap <C-e> $
 
 " search/move
 nnoremap / /\v
@@ -100,9 +101,24 @@ nnoremap k gk
 " leader
 let mapleader = ","
 
+" substitute under visual
+function! GetVisual() range
+    let reg_save = getreg('"')
+    let regtype_save = getregtype('"')
+    let cb_save = &clipboard
+    set clipboard&
+    normal! ""gvy
+    let selection = getreg('"')
+    call setreg('"', reg_save, regtype_save)
+    let &clipboard = cb_save
+    return selection
+endfunction
+vmap <leader>s :<c-U>%s/<c-r>=GetVisual()<cr>/
+
 " misc leader mappings
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYGVIMRC<cr>
 nnoremap <leader>v V`]
+"nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " f keys
 nmap <F3> :set list!<cr>
@@ -137,7 +153,7 @@ nnoremap <A-q> :qall<cr>
 nnoremap <A-s> :w<cr>
 
 " ack
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack -i 
 
 " fugitive (git)
 nnoremap <leader>gs :Gstatus<cr>
@@ -147,8 +163,6 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
 
-" command-t
-nnoremap <leader>fl :CommandTFlush<cr>
 
 " nerdtree
 noremap <F1> :NERDTreeToggle<cr>
@@ -156,3 +170,12 @@ inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
 au Filetype nerdtree setlocal nolist
 
+" tasklist
+nnoremap <leader>k <Plug>TaskList
+
+" command-t
+nnoremap <leader>fl :CommandTFlush<cr>
+
+" go to work directory
+command Store :exec "chdir /media/sandbox/workspace/meteor-prototype-catalog-apis"
+command Catalog :exec "chdir /media/sandbox/workspace/emobile-catalog"
