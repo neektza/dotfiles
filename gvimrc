@@ -56,8 +56,12 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
 set undofile
+set norelativenumber
+set number
+
+" include underscore in word movements
+set iskeyword+=_
 
 " wrapping
 set nowrap
@@ -86,15 +90,23 @@ set hlsearch
 "vnoremap <tab> %
 nnoremap <leader><space> :noh<cr>
 
-" educational
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" educational>
+inoremap <Left>  <Left>
+inoremap <Right> <Right>
+inoremap <Up>    <Up>
+inoremap <Down>  <Down>
+nnoremap <Left>  <Left>
+nnoremap <Right> <Right>
+nnoremap <Up>    <Up>
+nnoremap <Down>  <Down>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
@@ -163,7 +175,6 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
 
-
 " nerdtree
 noremap <F1> :NERDTreeToggle<cr>
 inoremap <F1> <esc>:NERDTreeToggle<cr>
@@ -177,7 +188,5 @@ nnoremap <leader>k <Plug>TaskList
 nnoremap <leader>fl :CommandTFlush<cr>
 
 " go to work directory
-command Store :exec "chdir /media/sandbox/workspace/meteor-prototype-catalog-apis"
-command Catalog :exec "chdir /media/sandbox/workspace/emobile-catalog"
-
-" s-tab
+"command Store :exec "chdir /media/sandbox/workspace/meteor-prototype-catalog-apis"
+"command Catalog :exec "chdir /media/sandbox/workspace/emobile-catalog"
