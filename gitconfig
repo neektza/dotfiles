@@ -1,10 +1,12 @@
 [user]
   name = Nikica Jokic
   email = nikica.jokic@infinum.hr
-[core]
-  editor = vim
+
+[github]
+  user = neektza
 
 [core]
+  editor = vim
 
 [color]
   status = auto
