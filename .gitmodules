@@ -26,10 +26,6 @@
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim
 	ignore = dirty
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
-	ignore = dirty
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = https://github.com/tpope/vim-rails.git
@@ -77,3 +73,8 @@
 [submodule "bundle/vividchalk"]
 	path = bundle/vividchalk
 	url = https://github.com/tpope/vim-vividchalk.git
+	ignore = dirty
+[submodule "bundle/commentary"]
+	path = bundle/commentary
+	url = https://github.com/tpope/vim-commentary.git
+	ignore = dirty

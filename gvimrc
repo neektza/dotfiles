@@ -11,7 +11,7 @@ set modelines=0
 " gvim specific
 set winaltkeys=no
 
-colorscheme vividchalk " texmate like
+colorscheme peaksea " easier on the eyes than vividchalk
 
 " tab and spaces
 set tabstop=8
