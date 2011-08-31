@@ -11,19 +11,7 @@ set modelines=0
 " gvim specific
 set winaltkeys=no
 
-" apperance
-if has("gui_running")
-  set guioptions-=T
-  set t_Co=256
-  set background=dark
-  colorscheme peaksea
-  set nonu
-else
-  colorscheme zellner
-  set background=dark
-
-  set nonu
-endif
+colorscheme vividchalk " texmate like
 
 " tab and spaces
 set tabstop=8
@@ -31,7 +19,6 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set listchars=tab:▸\ ,eol:¬
-
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -59,6 +46,7 @@ set laststatus=2
 set undofile
 set norelativenumber
 set number
+set foldmethod=manual
 
 " include underscore in word movements
 set iskeyword+=_
@@ -163,6 +151,11 @@ nnoremap <A-0> 10g
 nnoremap <A-w> :q<cr>
 nnoremap <A-q> :qall<cr>
 nnoremap <A-s> :w<cr>
+inoremap <A-w> <esc>:q<cr>a
+inoremap <A-q> <esc>:qall<cr>a
+inoremap <A-s> <esc>:w<cr>a
+nnoremap <A-z> u
+nnoremap <A-S-z> <C-r>
 
 " ack
 nnoremap <leader>a :Ack -i 
@@ -190,3 +183,29 @@ nnoremap <leader>fl :CommandTFlush<cr>
 " go to work directory
 "command Store :exec "chdir /media/sandbox/workspace/meteor-prototype-catalog-apis"
 "command Catalog :exec "chdir /media/sandbox/workspace/emobile-catalog"
+
+" Toggle fold state between closed and opened.
+"
+" If there is no fold at current line, just moves forward.
+" If it is present, reverse it's state.
+
+fu! ToggleFold()
+  if foldlevel('.') == 0
+    normal! l
+  else
+    if foldclosed('.') < 0
+      . foldclose
+    else
+      . foldopen
+    endif
+  endif
+  echo
+endf
+
+" Map this function to Space key.
+noremap <space> :call ToggleFold()<CR> 
+
+
+" ctags
+map <f9> :!ctags --extra=+f --exclude=.git --exclude=log -R * ~/.rvm/gems/ruby-1.9.2-p290/gems/*<CR><CR>
+
