@@ -208,4 +208,7 @@ noremap <space> :call ToggleFold()<CR>
 
 " ctags
 map <f9> :!ctags --extra=+f --exclude=.git --exclude=log -R * ~/.rvm/gems/ruby-1.9.2-p290/gems/*<CR><CR>
-
+nnoremap <A-]> <C-]>
+nnoremap <A-[> <C-t>
+nnoremap <A-n> :tn<cr>
+nnoremap <A-p> :tp<cr>
