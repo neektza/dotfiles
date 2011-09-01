@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Some commons
-alias ack='ack -ri'
+alias ack='ack-grep -ri'
 alias grep='grep -ri'
 
 # Speedups
