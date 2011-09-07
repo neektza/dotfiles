@@ -20,6 +20,13 @@ alias last_migration_edit='g `_last_migration`'
 alias migrate='rake db:migrate'
 alias bi='bundle install'
 
+
+###########
+# SERVERS #
+###########
+alias met-store-box = 'ssh storestaging@store.meteor.ie'
+alias met-ie-box = 'ssh meteor@meteor-sandbox.rubylithcms.com'
+
 ############
 # Load RVM #
 ############
