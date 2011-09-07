@@ -5,9 +5,7 @@ alias ack = 'ack-grep -ri'
 alias grep = 'grep -ri'
 
 # Speedups
-alias svnrm = 'find . -name *.svn* | xargs rm -rf'
-
-alias worky = 'cd /media/sandbox/workspace'
+alias rm-svn = 'find . -name *.svn* | xargs rm -rf'
 
 #########
 # RAILS #
