@@ -38,7 +38,7 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set visualbell
-set cursorline
+set nocursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -47,6 +47,8 @@ set undofile
 set norelativenumber
 set number
 set foldmethod=manual
+set guifont=Menlo\ Regular:h12
+
 
 " include underscore in word movements
 set iskeyword+=_
@@ -132,30 +134,25 @@ nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h <C-w>s<C-w>l
 noremap <C-j> <C-w>w
 noremap <C-k> <C-w>W
-nnoremap <A-k> :tabprev<cr>
-nnoremap <A-j> :tabnext<cr>
-nnoremap <leader>n :tabnew<cr>
-nnoremap <leader>q :q<cr>
-nnoremap <A-1> 1gt
-nnoremap <a-2> 2gt
-nnoremap <A-3> 3gt
-nnoremap <A-4> 4gt
-nnoremap <A-5> 5gt
-nnoremap <A-6> 6gt
-nnoremap <A-7> 7gt
-nnoremap <A-8> 8gt
-nnoremap <A-9> 9gt
-nnoremap <A-0> 10g
+nnoremap <D-1> 1gt
+inoremap <D-1> 1gt
+nnoremap <D-2> 2gt
+inoremap <D-2> 2gt
+nnoremap <D-3> 3gt
+inoremap <D-3> 3gt
+nnoremap <D-4> 4gt
+inoremap <D-4> 4gt
+nnoremap <D-5> 5gt
+nnoremap <D-6> 6gt
+nnoremap <D-7> 7gt
+nnoremap <D-8> 8gt
+nnoremap <D-9> 9gt
+nnoremap <D-0> 10g
 
 " iMacfiy
-nnoremap <A-w> :q<cr>
-nnoremap <A-q> :qall<cr>
-nnoremap <A-s> :w<cr>
-inoremap <A-w> <esc>:q<cr>a
-inoremap <A-q> <esc>:qall<cr>a
-inoremap <A-s> <esc>:w<cr>a
-nnoremap <A-z> u
-nnoremap <A-S-z> <C-r>
+nnoremap <D-s> :w<cr>
+nnoremap <D-z> u
+nnoremap <D-S-z> <C-r>
 
 " ack
 nnoremap <leader>a :Ack -i 
@@ -207,7 +204,8 @@ noremap <space> :call ToggleFold()<CR>
 
 
 " ctags
-map <f9> :!ctags --extra=+f --exclude=.git --exclude=log -R * ~/.rvm/gems/ruby-1.9.2-p290/gems/*<CR><CR>
+map <f9> :!ctags -R --exclude=.git ---exclude=.git --exclude=.svn --exclude=log * Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems
+map <f8> :%s/\s\+$//<cr>
 nnoremap <A-]> <C-]>
 nnoremap <A-[> <C-t>
 nnoremap <A-n> :tn<cr>

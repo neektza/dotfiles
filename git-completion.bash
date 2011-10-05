@@ -1,36 +1,3 @@
-#!/bin/bash
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
-
-# Some commons
-alias ack='ack -ri'
-alias mysql=/usr/local/mysql/bin/mysql
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
-
-#########
-# RAILS #
-#########
-alias _last_migration='echo db/migrate/`ls -Atr db/migrate/ | tail -1 `'
-
-###########
-# SERVERS #
-###########
-alias lambda-box='ssh meteor@meteor-sandbox.rubylithcms.com'
-alias mu-box=''
-alias emobile-box='ssh emobadmin@10.168.12.2'
-alias meteor-box='ssh storestaging@store.meteor.ie'
-
-#############
-# MYSQL gem #
-#############
-export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
-
-##############
-# Load RBenv #
-##############
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 #!bash
 #
 # bash/zsh completion support for core Git.
@@ -2770,4 +2737,3 @@ else
 		shopt "$@"
 	}
 fi
-
