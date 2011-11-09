@@ -8,8 +8,12 @@ filetype plugin indent on
 set nocompatible
 set modelines=0
 
-" gvim specific
+" gvim/macvim specific
 set winaltkeys=no
+set macmeta
+set transparency=0
+set nobeval
+macmenu File.Print key=<nop>
 
 colorscheme peaksea " easier on the eyes than vividchalk
 
@@ -47,8 +51,6 @@ set undofile
 set norelativenumber
 set number
 set foldmethod=manual
-set guifont=Menlo\ Regular:h12
-
 
 " include underscore in word movements
 set iskeyword+=_
@@ -119,7 +121,8 @@ vmap <leader>s :<c-U>%s/<c-r>=GetVisual()<cr>/
 
 " misc leader mappings
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYGVIMRC<cr>
-nnoremap <leader>v V`]
+
+"nnoremap <leader>v V`]
 "nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " f keys
@@ -132,8 +135,8 @@ nnoremap <leader>ft Vatzf
 " window, tab and split screen navigation
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h <C-w>s<C-w>l
-noremap <C-j> <C-w>w
-noremap <C-k> <C-w>W
+noremap <D-j> <C-w>w
+noremap <D-k> <C-w>W
 nnoremap <D-1> 1gt
 inoremap <D-1> 1gt
 nnoremap <D-2> 2gt
@@ -150,7 +153,6 @@ nnoremap <D-9> 9gt
 nnoremap <D-0> 10g
 
 " iMacfiy
-nnoremap <D-s> :w<cr>
 nnoremap <D-z> u
 nnoremap <D-S-z> <C-r>
 
@@ -166,7 +168,7 @@ nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
 
 " nerdtree
-noremap <F1> :NERDTreeToggle<cr>
+map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
 au Filetype nerdtree setlocal nolist
@@ -202,11 +204,14 @@ endf
 " Map this function to Space key.
 noremap <space> :call ToggleFold()<CR> 
 
+" Keys for ctags
+map <f9> :!ctags -R --exclude=.git --exclude=.svn --exclude=log * /Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/*
+nnoremap <M-]> <C-]>
+nnoremap <M-[> <C-t>
+nnoremap <M-n> :tn<cr>
+nnoremap <M-p> :tp<cr>
 
-" ctags
-map <f9> :!ctags -R --exclude=.git ---exclude=.git --exclude=.svn --exclude=log * Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems
+" Trailing whitespace removal
 map <f8> :%s/\s\+$//<cr>
-nnoremap <A-]> <C-]>
-nnoremap <A-[> <C-t>
-nnoremap <A-n> :tn<cr>
-nnoremap <A-p> :tp<cr>
+
+map <leader>r :MRU<cr>

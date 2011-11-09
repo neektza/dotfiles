@@ -3,6 +3,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Some commons
+alias m='mvim'
 alias ack='ack -ri'
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
@@ -15,10 +16,10 @@ alias _last_migration='echo db/migrate/`ls -Atr db/migrate/ | tail -1 `'
 ###########
 # SERVERS #
 ###########
-alias lambda-box='ssh meteor@meteor-sandbox.rubylithcms.com'
-alias mu-box=''
+alias mu-box='ssh meteor@212.78.225.69'
 alias emobile-box='ssh emobadmin@10.168.12.2'
-alias meteor-box='ssh storestaging@store.meteor.ie'
+alias storestaging='ssh storestaging@84.51.250.240'
+alias storeproduction='ssh storeproduction@84.51.250.240'
 
 #############
 # MYSQL gem #
@@ -31,7 +32,12 @@ export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-#!bash
+##############
+# True ctags #
+##############
+export PATH="/usr/local/bin:$PATH"
+
+#b!ash
 #
 # bash/zsh completion support for core Git.
 #

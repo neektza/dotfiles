@@ -19,6 +19,7 @@
   st = status
   ci = commit
   co = checkout
+  cp = cherry-pick
   br = branch
   df = diff
   lg = log -p
