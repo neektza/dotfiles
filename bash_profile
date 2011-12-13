@@ -7,6 +7,17 @@ alias m='mvim'
 alias ack='ack -ri'
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+alias ll='ls -lah'
+
+###########
+# GIT+HUB #
+###########
+alias git=hub
+
+######################################
+# Vim is the default editor, BUAHAHA #
+######################################
+export EDITOR=vim
 
 #########
 # RAILS #
@@ -16,10 +27,11 @@ alias _last_migration='echo db/migrate/`ls -Atr db/migrate/ | tail -1 `'
 ###########
 # SERVERS #
 ###########
-alias mu-box='ssh meteor@212.78.225.69'
-alias emobile-box='ssh emobadmin@10.168.12.2'
+alias meteor-sandbox='ssh meteor@212.78.225.69'
+alias meteor-forms='ssh forms@forms.meteor.ie'
 alias storestaging='ssh storestaging@84.51.250.240'
 alias storeproduction='ssh storeproduction@84.51.250.240'
+alias emobile-box='ssh emobadmin@10.168.12.2'
 
 #############
 # MYSQL gem #
@@ -35,7 +47,7 @@ eval "$(rbenv init -)"
 ##############
 # True ctags #
 ##############
-export PATH="/usr/local/bin:$PATH"
+export PATH="~/bin/:/usr/local/bin:$PATH"
 
 #b!ash
 #
