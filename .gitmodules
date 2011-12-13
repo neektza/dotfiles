@@ -34,14 +34,6 @@
 	path = vim/bundle/peaksea
 	url = https://github.com/vim-scripts/peaksea.git
 	ignore = dirty
-[submodule "vim/bundle/vim-textobj-user"]
-	path = vim/bundle/vim-textobj-user
-	url = https://github.com/kana/vim-textobj-user.git
-	ignore = dirty
-[submodule "vim/bundle/vim-textobj-user-ruby"]
-	path = vim/bundle/vim-textobj-user-ruby
-	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
-	ignore = dirty
 [submodule "vim/bundle/vim-matchit"]
 	path = vim/bundle/vim-matchit
 	url = https://github.com/tsaleh/vim-matchit.git
@@ -70,10 +62,6 @@
 	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
 	ignore = dirty
-[submodule "vim/bundle/vim-vividchalk"]
-	path = vim/bundle/vim-vividchalk
-	url = https://github.com/tpope/vim-vividchalk.git
-	ignore = dirty
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
@@ -81,3 +69,6 @@
 [submodule "vim/bundle/mru.vim"]
 	path = vim/bundle/mru.vim
 	url = git://github.com/vim-scripts/mru.vim.git
+[submodule "vim/bundle/yankring.vim"]
+	path = vim/bundle/yankring.vim
+	url = https://github.com/vim-scripts/YankRing.vim.git
