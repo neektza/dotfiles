@@ -133,8 +133,8 @@ nnoremap <F4> :set nolist wrap!<cr>
 nnoremap <leader>ft Vatzf
 
 " window, tab and split screen navigation
-nnoremap <leader>v <C-w>v<C-w>l
-nnoremap <leader>h <C-w>s<C-w>l
+nnoremap <S-D-v> <C-w>v<C-w>l
+nnoremap <S-D-h> <C-w>s<C-w>l
 noremap <D-j> <C-w>w
 noremap <D-k> <C-w>W
 nnoremap <D-1> 1gt
@@ -215,3 +215,6 @@ nnoremap <M-p> :tp<cr>
 map <f8> :%s/\s\+$//<cr>
 
 map <leader>r :MRU<cr>
+
+runtime vim/bundle/vim-matchit/plugin/matchit.vim
+ 

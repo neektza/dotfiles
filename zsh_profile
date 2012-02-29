@@ -1,0 +1,79 @@
+#!/bin/bash
+export PATH="/usr/local/mysql/bin/:~/bin/:/usr/local/bin:$PATH"
+
+# Some commons
+alias v='mvim'
+alias ack='ack -ri'
+alias grep='egrep -i'
+
+######################################
+# Vim is the default editor, BUAHAHA #
+######################################
+export EDITOR=vim
+
+#########
+# RAILS #
+#########
+alias _last_migration='echo db/migrate/`ls -Atr db/migrate/ | tail -1 `'
+
+###########
+# SERVERS #
+###########
+alias meteor-sandbox='ssh meteor@212.78.225.69'
+alias meteor-forms='ssh forms@forms.meteor.ie'
+alias storestaging='ssh storestaging@84.51.250.240'
+alias storeproduction='ssh storeproduction@84.51.250.240'
+alias formsproduction='ssh forms@84.51.250.240'
+alias emobile-box='ssh emobadmin@10.168.12.2'
+
+alias lambda_box_nj='ssh nikicajokic@lambda.huguenot-xmi.com'
+alias mu_box_nj='ssh nikicajokic@mu.huguenot-xmi.com'
+alias marvin='ssh neektza@marvin.kset.org'
+
+alias vz1='ssh www-data@vz1.infinum.hr'
+alias vz2='ssh www-data@vz2.infinum.hr'
+alias vz3='ssh www-data@vz3.infinum.hr'
+
+#############
+# MYSQL gem #
+#############
+export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
+
+##############
+# Load RBenv #
+##############
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+###################
+# OH MY ZSH begin # 
+###################
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git git-flow github bundler brew gem projects)
