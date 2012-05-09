@@ -2,7 +2,7 @@
 export PATH="/usr/local/mysql/bin/:~/bin/:/usr/local/bin:$PATH"
 
 # Some commons
-alias v='mvim'
+alias m='mvim'
 alias ack='ack -ri'
 alias grep='egrep -i'
 
@@ -37,7 +37,7 @@ alias vz3='ssh www-data@vz3.infinum.hr'
 #############
 # MYSQL gem #
 #############
-export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
+#export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 
 ##############
 # Load RBenv #
@@ -55,8 +55,8 @@ eval "$(rbenv init -)"
 ZSH_THEME="robbyrussell"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mvim ~/dotfiles/zsh_profile"
+alias ohmyzsh="mvim ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -76,4 +76,4 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow github bundler brew gem projects)
+#plugins=(git git-flow rbenv bundler brew gem)

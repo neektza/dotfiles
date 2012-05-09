@@ -11,7 +11,7 @@ set modelines=0
 " gvim/macvim specific
 set winaltkeys=no
 set macmeta
-set transparency=0
+set transparency=5
 set nobeval
 macmenu File.Print key=<nop>
 
