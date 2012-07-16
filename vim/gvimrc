@@ -11,9 +11,9 @@ set modelines=0
 " gvim/macvim specific
 set winaltkeys=no
 set macmeta
-set transparency=5
+set transparency=0
 set nobeval
-macmenu File.Print key=<nop>
+"macmenu File.Print key=<nop>
 
 colorscheme peaksea " easier on the eyes than vividchalk
 
@@ -216,5 +216,9 @@ map <f8> :%s/\s\+$//<cr>
 
 map <leader>r :MRU<cr>
 
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
+
 runtime vim/bundle/vim-matchit/plugin/matchit.vim
  
+

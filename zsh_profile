@@ -1,10 +1,13 @@
-#!/bin/bash
-export PATH="/usr/local/mysql/bin/:~/bin/:/usr/local/bin:$PATH"
+#!/bin/zsh
+export PATH="~/bin/:/usr/local/bin/:/usr/local/sbin:$PATH"
 
 # Some commons
-alias m='mvim'
+alias v='vim'
 alias ack='ack -ri'
 alias grep='egrep -i'
+alias ss='script/server'
+alias todo='todo.sh'
+alias worklog='vim $HOME/Dropbox/log/worklog.txt'
 
 ######################################
 # Vim is the default editor, BUAHAHA #
@@ -26,8 +29,8 @@ alias storeproduction='ssh storeproduction@84.51.250.240'
 alias formsproduction='ssh forms@84.51.250.240'
 alias emobile-box='ssh emobadmin@10.168.12.2'
 
-alias lambda_box_nj='ssh nikicajokic@lambda.huguenot-xmi.com'
-alias mu_box_nj='ssh nikicajokic@mu.huguenot-xmi.com'
+alias lambda_box_nj='ssh nikicajokic@212.78.225.68'
+alias mu_box_nj='ssh nikicajokic@212.78.225.69'
 alias marvin='ssh neektza@marvin.kset.org'
 
 alias vz1='ssh www-data@vz1.infinum.hr'
@@ -42,8 +45,8 @@ alias vz3='ssh www-data@vz3.infinum.hr'
 ##############
 # Load RBenv #
 ##############
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 ###################
 # OH MY ZSH begin # 
@@ -52,7 +55,7 @@ eval "$(rbenv init -)"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="afowler"
 
 # Example aliases
 alias zshconfig="mvim ~/dotfiles/zsh_profile"
@@ -76,4 +79,4 @@ alias ohmyzsh="mvim ~/.oh-my-zsh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git git-flow rbenv bundler brew gem)
+plugins=(git git-flow rbenv bundler brew)

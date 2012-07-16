@@ -24,3 +24,7 @@
   df = diff
   lg = log -p
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[mergetool "mvimdiff"]
+	path = /usr/local/bin//mvimdiff
+[mergetool "gvimdiff"]
+	path = /usr/local/bin//mvimdiff
