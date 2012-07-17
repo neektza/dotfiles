@@ -8,7 +8,15 @@ filetype plugin indent on
 set nocompatible
 set modelines=0
 
+" leader
+let mapleader = ","
+
+" clipboard
+set clipboard=unnamed
+
 " easier on the eyes than vividchalk
+set t_Co=256
+set background=dark
 colorscheme peaksea
 
 " tab and spaces
@@ -19,7 +27,6 @@ set expandtab
 "set listchars=tab:▸\ ,eol:¬
 nmap <F1> :set list!<cr>
 
-
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
@@ -28,7 +35,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" TODO: comments
+" settings 
 set encoding=utf-8
 set scrolloff=10
 set autoindent
@@ -38,7 +45,7 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set visualbell
-set cursorline
+set nocursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -65,6 +72,16 @@ set formatoptions=qrn1
 nnoremap <C-a> ^
 nnoremap <C-e> $
 
+" window, tab and split screen navigation
+map <leader>t :tabnew<cr>
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>h :split<cr>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
 " search/move
 nnoremap / /\v
 vnoremap / /\v
@@ -78,53 +95,19 @@ set hlsearch
 "vnoremap <tab> %
 nnoremap <leader><space> :noh<cr>
 
-inoremap <Left>  <Left>
-inoremap <Right> <Right>
-inoremap <Up>    <Up>
-inoremap <Down>  <Down>
-nnoremap <Left>  <Left>
-nnoremap <Right> <Right>
-nnoremap <Up>    <Up>
-nnoremap <Down>  <Down>
 nnoremap j gj
 nnoremap k gk
-
-" leader
-let mapleader = ","
 
 " misc leader mappings
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYGVIMRC<cr>
 nnoremap <leader>wr :set wrap!<cr>
 
-" f keys
+" function keys
 nmap <F3> :set list!<cr>
 nnoremap <F4> :set nolist wrap!<cr>
 
 " fold html tag
 nnoremap <leader>ft Vatzf
-
-" window, tab and split screen navigation
-nnoremap <leader>v :vsplit<cr>
-noremap <D-j> <C-w>w
-noremap <D-k> <C-w>W
-nnoremap <D-1> 1gt
-inoremap <D-1> 1gt
-nnoremap <D-2> 2gt
-inoremap <D-2> 2gt
-nnoremap <D-3> 3gt
-inoremap <D-3> 3gt
-nnoremap <D-4> 4gt
-inoremap <D-4> 4gt
-nnoremap <D-5> 5gt
-nnoremap <D-6> 6gt
-nnoremap <D-7> 7gt
-nnoremap <D-8> 8gt
-nnoremap <D-9> 9gt
-nnoremap <D-0> 10g
-
-" iMacfiy
-nnoremap <D-z> u
-nnoremap <D-S-z> <C-r>
 
 " ack
 nnoremap <leader>a :Ack -i
@@ -138,16 +121,24 @@ nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
 
 " nerdtree
-map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<CR>
+map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<cr>
 inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
 au Filetype nerdtree setlocal nolist
 
 " ctrlp
-let g:ctrlp_map = '<leader>t'
+let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>m :CtrlPMRUFiles<cr>
+nnoremap <f5> :CtrlPClearCache<cr>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log
 
 " insert mode toggling
-nnoremap <C-space> a
-imap <C-space> <Esc>
+" nnoremap <C-space> a
+" imap <C-space> <Esc>
+
+" disable ex mode
+nnoremap <silent> Q ZZ
+
+map <A-f> :CtrlP<cr>
