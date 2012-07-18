@@ -8,13 +8,17 @@ filetype plugin indent on
 set nocompatible
 set modelines=0
 
-" leader
-let mapleader = ","
+" gvim/macvim specific
+if has("gui_running")
+  set guioptions=egmrt
+  set winaltkeys=no
+  set macmeta
+  set transparency=0
+  set nobeval
+endif
+"macmenu File.Print key=<nop>
 
-" clipboard
-set clipboard=unnamed
-
-" easier on the eyes than vividchalk
+" colors
 set t_Co=256
 set background=dark
 colorscheme peaksea
@@ -24,8 +28,7 @@ set tabstop=8
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-"set listchars=tab:▸\ ,eol:¬
-nmap <F1> :set list!<cr>
+set listchars=tab:>\ ,eol:¬
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -35,7 +38,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" settings 
+" TODO: comments
 set encoding=utf-8
 set scrolloff=10
 set autoindent
@@ -50,7 +53,6 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set number 
 set undofile
 set norelativenumber
 set number
@@ -62,25 +64,17 @@ set iskeyword+=_
 " wrapping
 set nowrap
 set linebreak
-set textwidth=79
+"set textwidth=79
+"set nolinebreak
 set formatoptions=qrn1
 "set colorcolumn=85
 
+" leader
+let mapleader = ","
+
 " navigation
-"nnoremap ' `
-"nnoremap ` '
 nnoremap <C-a> ^
 nnoremap <C-e> $
-
-" window, tab and split screen navigation
-map <leader>t :tabnew<cr>
-nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>h :split<cr>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 
 " search/move
 nnoremap / /\v
@@ -95,22 +89,38 @@ set hlsearch
 "vnoremap <tab> %
 nnoremap <leader><space> :noh<cr>
 
-nnoremap j gj
-nnoremap k gk
+" window, tab and split screen navigation
+map <leader>t :tabnew<cr>
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>h :split<cr>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <D-1> 1gt
+inoremap <D-1> 1gt
+nnoremap <D-2> 2gt
+inoremap <D-2> 2gt
+nnoremap <D-3> 3gt
+inoremap <D-3> 3gt
+nnoremap <D-4> 4gt
+inoremap <D-4> 4gt
 
 " misc leader mappings
-nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYGVIMRC<cr>
-nnoremap <leader>wr :set wrap!<cr>
+nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
 
-" function keys
+" EOL chars
 nmap <F3> :set list!<cr>
 nnoremap <F4> :set nolist wrap!<cr>
+
+" Trailing whitespace removal
+map <f8> :%s/\s\+$//<cr>
 
 " fold html tag
 nnoremap <leader>ft Vatzf
 
 " ack
-nnoremap <leader>a :Ack -i
+nnoremap <leader>a :Ack -i 
 
 " fugitive (git)
 nnoremap <leader>gs :Gstatus<cr>
@@ -121,9 +131,9 @@ nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
 
 " nerdtree
-map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<cr>
+map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 inoremap <F1> <esc>:NERDTreeToggle<cr>
-let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
+let NERDTreeIgnore=['.vim$']
 au Filetype nerdtree setlocal nolist
 
 " ctrlp
@@ -132,13 +142,45 @@ let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <f5> :CtrlPClearCache<cr>
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
 
-" insert mode toggling
-" nnoremap <C-space> a
-" imap <C-space> <Esc>
+" Keys for ctags
+map <f9> :!ctags -R --exclude=.git --exclude=.svn --exclude=log * /Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/*
+nnoremap <M-]> <C-]>
+nnoremap <M-[> <C-t>
+nnoremap <M-n> :tn<cr>
+nnoremap <M-p> :tp<cr>
 
-" disable ex mode
-nnoremap <silent> Q ZZ
+" substitute under visual
+function! GetVisual() range
+    let reg_save = getreg('"')
+    let regtype_save = getregtype('"')
+    let cb_save = &clipboard
+    set clipboard&
+    normal! ""gvy
+    let selection = getreg('"')
+    call setreg('"', reg_save, regtype_save)
+    let &clipboard = cb_save
+    return selection
+endfunction
+vmap <leader>s :<c-U>%s/<c-r>=GetVisual()<cr>/
 
-map <A-f> :CtrlP<cr>
+
+" Various shortcuts
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :wq<cr>
+inoremap jj <Esc>
+inoremap kk <Esc>
+
+" up/down through wraps
+nnoremap j gj
+nnoremap k gk
+
+" OSX integration
+if has("gui_running")
+  nnoremap <D-z> u 
+  nnoremap <D-S-z> <C-r>
+else
+  set clipboard=unnamed
+endif
+
