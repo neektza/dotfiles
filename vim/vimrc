@@ -8,13 +8,16 @@ filetype plugin indent on
 set nocompatible
 set modelines=0
 
-" gvim/macvim specific
+" vim/macvim 
 if has("gui_running")
   set guioptions=egmrt
   set winaltkeys=no
   set macmeta
   set transparency=0
   set nobeval
+  set listchars=tab:>\ ,eol:¬
+else
+  set clipboard=unnamed
 endif
 "macmenu File.Print key=<nop>
 
@@ -28,7 +31,6 @@ set tabstop=8
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-set listchars=tab:>\ ,eol:¬
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -73,8 +75,8 @@ set formatoptions=qrn1
 let mapleader = ","
 
 " navigation
-nnoremap <C-a> ^
-nnoremap <C-e> $
+" nnoremap <C-a> ^
+" nnoremap <C-e> $
 
 " search/move
 nnoremap / /\v
@@ -169,18 +171,16 @@ vmap <leader>s :<c-U>%s/<c-r>=GetVisual()<cr>/
 " Various shortcuts
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :wq<cr>
-inoremap jj <Esc>
-inoremap kk <Esc>
+inoremap jj <Esc>l
+inoremap kk <Esc>l
 
 " up/down through wraps
 nnoremap j gj
 nnoremap k gk
 
-" OSX integration
+" MacVIM OSX integration
 if has("gui_running")
   nnoremap <D-z> u 
   nnoremap <D-S-z> <C-r>
-else
-  set clipboard=unnamed
 endif
 

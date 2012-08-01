@@ -3,11 +3,12 @@ export PATH="~/bin/:/usr/local/bin/:/usr/local/sbin:$PATH"
 
 # Some commons
 alias v='vim'
+alias m='mvim'
 alias ack='ack -ri'
 alias grep='egrep -i'
 alias ss='script/server'
 alias todo='todo.sh'
-alias worklog='vim $HOME/Dropbox/log/worklog.txt'
+alias netstat_osx="lsof -i 4 -P -n"
 
 ######################################
 # Vim is the default editor, BUAHAHA #
