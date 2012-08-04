@@ -1,5 +1,5 @@
 #!/bin/zsh
-export PATH="~/bin/:/usr/local/bin/:/usr/local/sbin:$PATH"
+export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Some commons
 alias v='vim'
