@@ -26,11 +26,20 @@ set t_Co=256
 set background=dark
 colorscheme peaksea
 
+au BufNewFile,BufRead *.ejs set filetype=html
+
 " tab and spaces
-set tabstop=8
+set nosmarttab
+set tabstop=4
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+
+" per filetype settings
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4 noet
+autocmd Filetype jade setlocal ts=4 sts=4 sw=4 noet
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -107,6 +116,10 @@ nnoremap <D-3> 3gt
 inoremap <D-3> 3gt
 nnoremap <D-4> 4gt
 inoremap <D-4> 4gt
+
+nnoremap <C-a> ^
+nnoremap <C-e> $
+
 
 " misc leader mappings
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>

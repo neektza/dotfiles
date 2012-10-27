@@ -1,19 +1,20 @@
 #!/bin/zsh
+
+ZSH=$HOME/.oh-my-zsh
+DOTFILES=$HOME/dotfiles
+
 export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export EDITOR=vim
 
 # Some commons
 alias v='vim'
 alias m='mvim'
 alias ack='ack -ri'
 alias grep='egrep -i'
-alias ss='script/server'
-alias todo='todo.sh'
-alias netstat_osx="lsof -i 4 -P -n"
 
-######################################
-# Vim is the default editor, BUAHAHA #
-######################################
-export EDITOR=vim
+alias netstat_osx="lsof -i 4 -P -n"
+alias zshconfig="mvim ~/dotfiles/zshrc"
+alias ohmyzsh="mvim ~/.oh-my-zsh"
 
 #########
 # RAILS #
@@ -32,6 +33,5 @@ alias magrathea='ssh neektza@magrathea.kset.org -p 1022'
 ###################
 ZSH_THEME="afowler"
 
-alias zshconfig="mvim ~/dotfiles/zsh_profile"
-alias ohmyzsh="mvim ~/.oh-my-zsh"
-
+source $ZSH/oh-my-zsh.sh
+plugins=(git git-flow osx brew ruby gem bundler) 

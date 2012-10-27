@@ -1,6 +1,6 @@
 [user]
 	name = Nikica Jokic
-	email = nikica.jokic@infinum.hr
+	email = neektza@gmail.com
 
 [github]
   user = neektza
@@ -15,6 +15,7 @@
 
 [alias]
   a = add
+  l = "!source ~/.githelpers && pretty_git_log"
   au = add -u
   st = status
   ci = commit
