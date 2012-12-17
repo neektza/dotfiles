@@ -156,8 +156,13 @@ let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>m :CtrlPMRUFiles<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <f5> :CtrlPClearCache<cr>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '.*node_modules.*',
+  \ }
+
 
 " Keys for ctags
 map <f9> :!ctags -R --exclude=.git --exclude=.svn --exclude=log * /Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/*
