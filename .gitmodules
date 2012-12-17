@@ -83,27 +83,9 @@
 [submodule "vim/bundle/vim-powerline"]
   path = vim/bundle/vim-powerline
   url = https://github.com/Lokaltog/vim-powerline.git
-[submodule "vim/bundle/vim-sunburst"]
-  path = vim/bundle/vim-sunburst
-  url = https://github.com/sickill/vim-sunburst.git
 [submodule "vim/bundle/syntastic"]
   path = vim/bundle/syntastic
   url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/vim-colorschemes"]
   path = vim/bundle/vim-colorschemes
   url = git@github.com:flazz/vim-colorschemes.git
-[submodule "vim/bundle/VimClojure"]
-  path = vim/bundle/VimClojure
-  url = git://github.com/vim-scripts/VimClojure.git
-[submodule "vim/bundle/peaksea"]
-  path = vim/bundle/peaksea
-  url = git://github.com/vim-scripts/peaksea.git
-[submodule "vim/bundle/vim-elixir"]
-  path = vim/bundle/vim-elixir
-  url = git://github.com/elixir-lang/vim-elixir.git
-[submodule "vim/bundle/vim-jade"]
-  path = vim/bundle/vim-jade
-  url = git://github.com/digitaltoad/vim-jade.git
-[submodule "vim/bundle/vim-less"]
-  path = vim/bundle/vim-less
-  url = git://github.com/groenewege/vim-less.git
