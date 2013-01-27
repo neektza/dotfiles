@@ -24,22 +24,19 @@ endif
 " colors
 set t_Co=256
 set background=dark
-colorscheme peaksea
+colorscheme wombat
 
 au BufNewFile,BufRead *.ejs set filetype=html
 
 " tab and spaces
 set nosmarttab
+set noexpandtab
 set tabstop=4
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set shiftwidth=4
+set softtabstop=4
 
 " per filetype settings
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4 noet
-autocmd Filetype jade setlocal ts=4 sts=4 sw=4 noet
+autocmd Filetype ruby setlocal et ts=2 sts=2 sw=2
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files

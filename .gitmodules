@@ -89,3 +89,6 @@
 [submodule "vim/bundle/vim-colorschemes"]
   path = vim/bundle/vim-colorschemes
   url = git@github.com:flazz/vim-colorschemes.git
+[submodule "vim/bundle/vim-clojure"]
+	path = vim/bundle/vim-clojure
+	url = git://github.com/vim-scripts/VimClojure.git

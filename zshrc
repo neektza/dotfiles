@@ -38,3 +38,6 @@ alias magrathea='ssh neektza@magrathea.kset.org -p 1022'
 ZSH_THEME="afowler"
 plugins=(osx brew git git-flow rbenv ruby gem bundler lein node mvn) 
 source $ZSH/oh-my-zsh.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
