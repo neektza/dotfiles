@@ -92,3 +92,9 @@
 [submodule "vim/bundle/vim-clojure"]
 	path = vim/bundle/vim-clojure
 	url = git://github.com/vim-scripts/VimClojure.git
+[submodule "vim/bundle/mustache"]
+	path = vim/bundle/mustache
+	url = git://github.com/juvenn/mustache.vim.git
+[submodule "vim/bundle/vim-racket"]
+	path = vim/bundle/vim-racket
+	url = git://github.com/wlangstroth/vim-racket.git

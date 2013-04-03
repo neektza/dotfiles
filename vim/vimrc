@@ -24,7 +24,7 @@ endif
 " colors
 set t_Co=256
 set background=dark
-colorscheme wombat
+colorscheme peaksea
 
 au BufNewFile,BufRead *.ejs set filetype=html
 
@@ -157,7 +157,7 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <f5> :CtrlPClearCache<cr>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '.*node_modules.*',
+  \ 'dir':  'node_modules$',
   \ }
 
 

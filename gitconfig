@@ -24,6 +24,7 @@
   cp = cherry-pick
   br = branch
   df = diff
+  sm = submodule
   lg = log -p
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
