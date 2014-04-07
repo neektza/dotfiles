@@ -1,37 +1,35 @@
 [user]
 	name = Nikica Jokic
 	email = neektza@gmail.com
-
-[github]
-  user = neektza
-
+[credential "https://github.com"]
+	username = neektza
 [core]
-  editor = vim
-
+	editor = vim
 [color]
-  status = auto
-  diff = auto
-  branch = auto
-
+	status = auto
+	diff = auto
+	branch = auto
 [alias]
-  a = add
-  l = "!source ~/.githelpers && pretty_git_log"
-  au = add -u
-  aa = add -A
-  st = status
-  ci = commit
-  co = checkout
-  cp = cherry-pick
-  br = branch
-  df = diff
-  sm = submodule
-  lg = log -p
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-
+	a = add
+	au = add -u
+	aa = add -A
+	st = status
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+	br = branch
+	df = diff
+	dfs = diff --staged
+	sm = submodule
+	lg = log -p
+	rs = reset
+	l = "!source ~/.githelpers && pretty_git_log"
+	h= "!source ~/.githelpers && tree_hist"
 [difftool]
-  tool = vimdiff
-
+	tool = vimdiff
 [mergetool]
-  tool = vimdiff
+	tool = vimdiff
 [merge]
 	tool = vimdiff
+[push]
+	default = simple

@@ -3,8 +3,12 @@
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/dotfiles
 
-export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
+export PGDATA=/usr/local/var/postgres/
+export PGDATABASE=bithub_development
 export EDITOR=vim
+
+unsetopt correct_all
 
 # Some commons
 alias v='vim'
@@ -12,16 +16,17 @@ alias m='mvim'
 alias ack='ack -r'
 alias grep='egrep -i'
 alias fs='foreman start'
-alias gphm='git push heroku master'
-alias gpom='git push origin master'
+
+alias clrf="perl -pi -e 's/\r/\n/g'"
 
 alias netstat_osx="lsof -i 4 -P -n"
 alias zshconfig="mvim ~/dotfiles/zshrc"
 alias ohmyzsh="mvim ~/.oh-my-zsh"
-alias mongolab="mongo ds039707.mongolab.com:39707/heroku_app7670072 -u heroku_app7670072 -p bc1vc25hr8ola87c5cvpcet0gq"
-alias mongohq="mongo rose.mongohq.com:10049/app7670072 -u heroku -p e2f5d8946640033b06a0492d37962086"
-alias mongohq-staging="mongo linus.mongohq.com:10090/app11590549 -u heroku -p 432b46ea679528e1d769a8675d53ae0d"
-alias mongohq-testing="mongo linus.mongohq.com:10027/app11590671 -u heroku -p 5096a59c8898fffd8544567650e12a9c"
+alias bithub_prod="ssh bithub@69.164.216.88"
+alias bithub_staging="ssh bithub@173.230.136.135"
+alias bithub_testing="ssh bithub@88.80.184.65"
+alias moj="ssh neektza@95.85.18.108"
+alias bitovi="ssh neektza@107.170.249.76"
 
 #########
 # RAILS #
@@ -35,12 +40,17 @@ alias marvin='ssh neektza@marvin.kset.org'
 alias roosta='ssh neektza@roosta.kset.org'
 alias magrathea='ssh neektza@magrathea.kset.org -p 1022'
 
+#########
+# RBENV #
+#########
+export RBENV_ROOT=/usr/local/var/rbenv
+
 ###################
 # OH MY ZSH begin # 
 ###################
 ZSH_THEME="afowler"
-plugins=(osx brew git git-flow hub rbenv ruby gem bundler lein node mvn npm rails) 
+plugins=(osx brew git git-flow hub rbenv ruby gem bundler node npm rails vagrant jekyll cabal)
 source $ZSH/oh-my-zsh.sh
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# added by travis gem
+source /Users/neektza/.travis/travis.sh
