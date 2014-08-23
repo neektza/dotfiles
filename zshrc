@@ -51,6 +51,3 @@ export RBENV_ROOT=/usr/local/var/rbenv
 ZSH_THEME="afowler"
 plugins=(osx brew git git-flow hub rbenv ruby gem bundler node npm rails vagrant jekyll cabal)
 source $ZSH/oh-my-zsh.sh
-
-# added by travis gem
-source /Users/neektza/.travis/travis.sh
