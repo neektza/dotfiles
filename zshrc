@@ -5,6 +5,7 @@ DOTFILES=$HOME/dotfiles
 
 export PATH="$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 export PGDATA=/usr/local/var/postgres/
+export LEIN_JAVA_CMD=/usr/local/bin/drip
 export PGDATABASE=bithub_development
 export EDITOR=vim
 
@@ -49,5 +50,8 @@ export RBENV_ROOT=/usr/local/var/rbenv
 # OH MY ZSH begin # 
 ###################
 ZSH_THEME="afowler"
-plugins=(osx brew git git-flow hub rbenv ruby gem bundler node npm rails vagrant jekyll cabal)
+plugins=(osx brew git git-flow hub rbenv ruby gem bundler node npm rails vagrant jekyll cabal virtualenv virtualenvwrapper ctags)
 source $ZSH/oh-my-zsh.sh
+
+# added by travis gem
+source /Users/neektza/.travis/travis.sh
