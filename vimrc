@@ -23,10 +23,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-dispatch'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -34,8 +34,17 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'gkz/vim-ls'
 Plugin 'rking/ag.vim'
+Plugin 'bling/vim-airline'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'mhinz/vim-signify'
+Plugin 'Shougo/neocomplete.vim'
 
 " Syntax
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-rails'
 Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-liquid'
@@ -62,6 +71,10 @@ if has("gui_running")
   set transparency=0
   set nobeval
   set listchars=tab:>\ ,eol:¬
+  set guifont=Liberation\ Mono\ for\ Powerline:h14
+  " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+  " set guifont=Inconsolata\ for\ Powerline:h15
+  " set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
 else
   set clipboard=unnamed
 endif
@@ -71,8 +84,6 @@ endif
 set t_Co=256
 set background=dark
 colorscheme peaksea
-
-au BufNewFile,BufRead *.ejs set filetype=html
 
 " tab and spaces
 set nosmarttab
@@ -84,6 +95,10 @@ set ffs=unix,dos
 
 " per filetype settings
 autocmd Filetype ruby setlocal et ts=2 sts=2 sw=2
+
+" capistrano is Ruby
+autocmd BufRead,BufNewFile *.cap set filetype=ruby
+autocmd BufRead,BufNewFile Capfile set filetype=ruby
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -166,7 +181,6 @@ inoremap <D-5> 5gt
 nnoremap <C-a> ^
 nnoremap <C-e> $
 
-
 " misc leader mappings
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
 
@@ -177,10 +191,7 @@ nnoremap <F4> :set nolist wrap!<cr>
 " Trailing whitespace removal
 map <f8> :%s/\s\+$//<cr>
 
-" fold html tag
-nnoremap <space> za
-
-" ack
+" silver surfer searcher
 nnoremap <leader>a :Ag -i 
 
 " fugitive (git)
@@ -197,6 +208,10 @@ inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$']
 au Filetype nerdtree setlocal nolist
 
+" tagbar 
+map <F2> :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+
 " ctrlp
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
@@ -207,8 +222,6 @@ nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <f5> :CtrlPClearCache<cr>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
-
-
 
 " Keys for ctags
 map <f9> :!ctags -R --exclude=.git --exclude=.svn --exclude=log * /Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/*
@@ -256,6 +269,7 @@ endif
 
 map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
+" lambda shadowing
 if has('conceal')
 	if has('autocmd')
 		autocmd Syntax * syn keyword Operator not conceal cchar=¬
@@ -266,3 +280,25 @@ if has('conceal')
 	hi! link Conceal Operator
 	set conceallevel=2
 endif
+
+" spellchecking
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.md set complete+=kspell
+autocmd FileType gitcommit setlocal spell spelllang=en_us
+
+" rspec.vim
+map <Leader>tt :call RunCurrentSpecFile()<CR>
+map <Leader>rt :call RunLastSpec()<CR>
+map <Leader>at :call RunAllSpecs()<CR>
+"let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_runner = "os_x_iterm"
+
+" syntastic
+let g:syntastic_check_on_save=1
+let g:syntastic_ruby_checkers=['mri','ruby-lint']
+
+" airline
+let g:airline_powerline_fonts = 1
+
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
