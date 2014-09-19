@@ -65,20 +65,19 @@ syntax on
 
 " vim/macvim 
 if has("gui_running")
-  set guioptions=egmrt
-  set winaltkeys=no
-  set macmeta
-  set transparency=0
-  set nobeval
-  set listchars=tab:>\ ,eol:¬
-  set guifont=Liberation\ Mono\ for\ Powerline:h14
-  " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
-  " set guifont=Inconsolata\ for\ Powerline:h15
-  " set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
+	set guioptions=egmrt
+	set winaltkeys=no
+	set macmeta
+	set transparency=0
+	set nobeval
+	set listchars=tab:>\ ,eol:¬
+	set guifont=Liberation\ Mono\ for\ Powerline:h14
+	" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+	" set guifont=Inconsolata\ for\ Powerline:h15
+	" set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
 else
-  set clipboard=unnamed
+	set clipboard=unnamed
 endif
-"macmenu File.Print key=<nop>
 
 " colors
 set t_Co=256
@@ -232,20 +231,17 @@ nnoremap <M-p> :tp<cr>
 
 " substitute under visual
 function! GetVisual() range
-    let reg_save = getreg('"')
-    let regtype_save = getregtype('"')
-    let cb_save = &clipboard
-    set clipboard&
-    normal! ""gvy
-    let selection = getreg('"')
-    call setreg('"', reg_save, regtype_save)
-    let &clipboard = cb_save
-    return selection
+	let reg_save = getreg('"')
+	let regtype_save = getregtype('"')
+	let cb_save = &clipboard
+	set clipboard&
+	normal! ""gvy
+	let selection = getreg('"')
+	call setreg('"', reg_save, regtype_save)
+	let &clipboard = cb_save
+	return selection
 endfunction
 vmap <leader>s :<c-U>%s/<c-r>=GetVisual()<cr>/
-
-" Markdown, disable folding
-let g:vim_markdown_folding_disabled=1
 
 " Various shortcuts for fugitive
 nnoremap <leader>gw :Gwrite<cr>
@@ -263,13 +259,13 @@ nnoremap k gk
 
 " MacVIM OSX integration
 if has("gui_running")
-  nnoremap <D-z> u 
-  nnoremap <D-S-z> <C-r>
+	nnoremap <D-z> u 
+	nnoremap <D-S-z> <C-r>
 endif
 
 map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
-" lambda shadowing
+" lambda shadowing, h4x0r
 if has('conceal')
 	if has('autocmd')
 		autocmd Syntax * syn keyword Operator not conceal cchar=¬
@@ -295,10 +291,14 @@ let g:rspec_runner = "os_x_iterm"
 
 " syntastic
 let g:syntastic_check_on_save=1
-let g:syntastic_ruby_checkers=['mri','ruby-lint']
+let g:syntastic_ruby_checkers=["mri","ruby-lint"]
 
 " airline
 let g:airline_powerline_fonts = 1
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
+
+" Markdown, disable folding
+let g:vim_markdown_folding_disabled=1
+
