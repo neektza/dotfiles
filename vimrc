@@ -24,6 +24,10 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-liquid'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
@@ -39,15 +43,12 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
-Plugin 'mhinz/vim-signify'
 Plugin 'Shougo/neocomplete.vim'
-
-" Syntax
+Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-liquid'
 Plugin 'wlangstroth/vim-haskell'
 Plugin 'chriseppstein/vim-haml'
 Plugin 'pangloss/vim-javascript'
@@ -65,6 +66,7 @@ syntax on
 
 " vim/macvim 
 if has("gui_running")
+	" settings
 	set guioptions=egmrt
 	set winaltkeys=no
 	set macmeta
@@ -75,6 +77,10 @@ if has("gui_running")
 	" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 	" set guifont=Inconsolata\ for\ Powerline:h15
 	" set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
+
+	" keys
+	nnoremap <D-z> u 
+	nnoremap <D-S-z> <C-r>
 else
 	set clipboard=unnamed
 endif
@@ -92,12 +98,12 @@ set shiftwidth=4
 set softtabstop=4
 set ffs=unix,dos
 
-" per filetype settings
-autocmd Filetype ruby setlocal et ts=2 sts=2 sw=2
-
 " capistrano is Ruby
 autocmd BufRead,BufNewFile *.cap set filetype=ruby
 autocmd BufRead,BufNewFile Capfile set filetype=ruby
+
+" Ruby is spaces, not tabs
+autocmd Filetype ruby setlocal et ts=2 sts=2 sw=2
 
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -181,7 +187,7 @@ nnoremap <C-a> ^
 nnoremap <C-e> $
 
 " misc leader mappings
-nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 
 " EOL chars
 nmap <F3> :set list!<cr>
@@ -256,12 +262,6 @@ inoremap kk <Esc>l
 " up/down through wraps
 nnoremap j gj
 nnoremap k gk
-
-" MacVIM OSX integration
-if has("gui_running")
-	nnoremap <D-z> u 
-	nnoremap <D-S-z> <C-r>
-endif
 
 map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
