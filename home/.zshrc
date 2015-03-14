@@ -6,28 +6,27 @@ DOTFILES=$HOME/dotfiles
 export PATH="$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 export PGDATA=/usr/local/var/postgres/
 export LEIN_JAVA_CMD=/usr/local/bin/drip
-export PGDATABASE=bithub_development
 export EDITOR=vim
 
 unsetopt correct_all
 
 # Some commons
 alias v='vim'
-alias m='mvim'
+alias ml='LIGHT=1true vim'
 alias ack='ack -r'
 alias grep='egrep -i'
 alias fs='foreman start'
+alias gti='git'
 
 alias clrf="perl -pi -e 's/\r/\n/g'"
 
 alias netstat_osx="lsof -i 4 -P -n"
-alias zshconfig="mvim ~/dotfiles/zshrc"
-alias ohmyzsh="mvim ~/.oh-my-zsh"
 alias bithub_prod="ssh bithub@69.164.216.88"
-alias bithub_staging="ssh bithub@173.230.136.135"
-alias bithub_testing="ssh bithub@88.80.184.65"
-alias moj="ssh neektza@95.85.18.108"
-alias bitovi="ssh neektza@107.170.249.76"
+alias bithub_staging="ssh root@173.230.136.135"
+alias bithub_testing="ssh root@88.80.184.65"
+alias bithub_development="ssh bithub@192.168.99.99"
+alias bithub_vagrant="ssh bithub@192.168.99.99"
+alias floatingpoint="ssh root@178.62.198.200"
 
 #########
 # RAILS #
@@ -50,7 +49,7 @@ export RBENV_ROOT=/usr/local/var/rbenv
 # OH MY ZSH begin # 
 ###################
 ZSH_THEME="afowler"
-plugins=(osx brew git git-flow hub rbenv ruby gem bundler node npm rails vagrant jekyll cabal virtualenv virtualenvwrapper ctags)
+plugins=(osx brew tmux git git-flow hub rbenv ruby gem bundler rails vagrant jekyll haskell cabal opam ctags lein)
 source $ZSH/oh-my-zsh.sh
 
 # added by travis gem

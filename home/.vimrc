@@ -6,12 +6,8 @@ filetype off
 set nocompatible
 set modelines=0
 
-" Vundle initialization
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+" Plugin manager installation
+call plug#begin('~/.vim/plugged')
 
 " Plugins
 Plugin 'ervandew/supertab'
@@ -28,24 +24,23 @@ Plugin 'tpope/vim-liquid'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
+Plugin 'benmills/vimux'
+Plugin 'janko-m/vim-test'
+Plugin 'bruno-/vim-husk'
+Plugin 'tmux-plugins/vim-tmux'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 Plugin 'gkz/vim-ls'
 Plugin 'rking/ag.vim'
 Plugin 'bling/vim-airline'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
@@ -55,11 +50,11 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'vim-scripts/VimClojure'
 Plugin 'juvenn/mustache.vim'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'stephpy/vim-yaml'
 
-call vundle#end()
+call plug#end()
+
 filetype plugin indent on
 
 syntax on
@@ -87,8 +82,13 @@ endif
 
 " colors
 set t_Co=256
-set background=dark
-colorscheme peaksea
+:if $LIGHT
+	:set background=light
+	:colorscheme pyte
+:else
+	:set background=dark
+	:colorscheme peaksea
+:end
 
 " tab and spaces
 set nosmarttab
@@ -221,7 +221,7 @@ let g:tagbar_autofocus=1
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_open_new_file = 'v'
-let g:ctrlp_custom_ignore = { 'dir': 'node_modules$' }
+let g:ctrlp_custom_ignore = { 'dir': 'node_modules\|bower_components\|DS_Store\|git' }
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
@@ -282,16 +282,21 @@ autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set complete+=kspell
 autocmd FileType gitcommit setlocal spell spelllang=en_us
 
-" rspec.vim
-map <Leader>tt :call RunCurrentSpecFile()<CR>
-map <Leader>rt :call RunLastSpec()<CR>
-map <Leader>at :call RunAllSpecs()<CR>
-"let g:rspec_command = "Dispatch rspec {spec}"
-let g:rspec_runner = "os_x_iterm"
+" vim-test
+nmap <silent> <leader>rn :TestNearest<CR>
+nmap <silent> <leader>rf :TestFile<CR>
+nmap <silent> <leader>rs :TestSuite<CR>
+nmap <silent> <leader>rl :TestLast<CR>
+nmap <silent> <leader>rv :TestVisit<CR>
+
+let g:test#strategy = 'vimux'
 
 " syntastic
-let g:syntastic_check_on_save=1
-let g:syntastic_ruby_checkers=["mri","ruby-lint"]
+" let g:syntastic_check_on_save=1
+" let g:syntastic_ruby_checkers=["mri", "rubocop"]
+
+" easytags
+let g:easytags_async = 1
 
 " airline
 let g:airline_powerline_fonts = 1

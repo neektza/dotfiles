@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Some commons
-alias m='mvim'
 alias ll='ls -lah'
 export EDITOR=vim
 
