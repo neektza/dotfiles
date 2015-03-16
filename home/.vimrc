@@ -29,6 +29,7 @@ Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
 Plug 'janko-m/vim-test'
 Plug 'bruno-/vim-husk'
+Plug 'bruno-/vim-ruby-fold'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'flazz/vim-colorschemes'
 Plug 'kana/vim-textobj-user'
@@ -74,10 +75,6 @@ if has("gui_running")
 	" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 	" set guifont=Inconsolata\ for\ Powerline:h15
 	" set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
-
-	" keys
-	nnoremap <D-z> u 
-	nnoremap <D-S-z> <C-r>
 else
 	set clipboard=unnamed
 endif
@@ -134,6 +131,7 @@ set undofile
 set norelativenumber
 set number
 set foldmethod=manual
+set mouse=a
 
 " include underscore in word movements
 set iskeyword+=_
@@ -174,16 +172,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <D-1> 1gt
-inoremap <D-1> 1gt
-nnoremap <D-2> 2gt
-inoremap <D-2> 2gt
-nnoremap <D-3> 3gt
-inoremap <D-3> 3gt
-nnoremap <D-4> 4gt
-inoremap <D-4> 4gt
-nnoremap <D-5> 5gt
-inoremap <D-5> 5gt
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>q :q<cr>
 
 nnoremap <C-a> ^
 nnoremap <C-e> $
@@ -230,13 +223,6 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <f5> :CtrlPClearCache<cr>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
 
-" Keys for ctags
-map <f9> :!ctags -R --exclude=.git --exclude=.svn --exclude=log * /Users/neektza/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/* /Users/neektza/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/*
-nnoremap <M-]> <C-]>
-nnoremap <M-[> <C-t>
-nnoremap <M-n> :tn<cr>
-nnoremap <M-p> :tp<cr>
-
 " substitute under visual
 function! GetVisual() range
 	let reg_save = getreg('"')
@@ -265,7 +251,9 @@ inoremap kk <Esc>l
 nnoremap j gj
 nnoremap k gk
 
-map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+" folding
+nnoremap z<space> za
+xnoremap z<space> za
 
 " lambda shadowing, h4x0r
 if has('conceal')
@@ -285,11 +273,11 @@ autocmd BufRead,BufNewFile *.md set complete+=kspell
 autocmd FileType gitcommit setlocal spell spelllang=en_us
 
 " vim-test
-nmap <silent> <leader>rn :TestNearest<CR>
-nmap <silent> <leader>rf :TestFile<CR>
-nmap <silent> <leader>rs :TestSuite<CR>
-nmap <silent> <leader>rl :TestLast<CR>
-nmap <silent> <leader>rv :TestVisit<CR>
+nmap <silent> <leader>rn :TestNearest<cr>
+nmap <silent> <leader>rf :TestFile<cr>
+nmap <silent> <leader>rs :TestSuite<cr>
+nmap <silent> <leader>rl :TestLast<cr>
+nmap <silent> <leader>rv :TestVisit<cr>
 
 let g:test#strategy = 'vimux'
 
