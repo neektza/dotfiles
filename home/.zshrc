@@ -20,6 +20,10 @@ alias gti='git'
 
 alias clrf="perl -pi -e 's/\r/\n/g'"
 
+# SERVERS
+alias marvin='ssh neektza@marvin.kset.org'
+alias roosta='ssh neektza@roosta.kset.org'
+alias magrathea='ssh neektza@magrathea.kset.org -p 1022'
 alias netstat_osx="lsof -i 4 -P -n"
 alias bithub_prod="ssh bithub@69.164.216.88"
 alias bithub_staging="ssh root@173.230.136.135"
@@ -28,26 +32,13 @@ alias bithub_development="ssh bithub@192.168.99.99"
 alias bithub_vagrant="ssh bithub@192.168.99.99"
 alias floatingpoint="ssh root@178.62.198.200"
 
-#########
-# RAILS #
-#########
-alias _last_migration='echo db/migrate/`ls -Atr db/migrate/ | tail -1 `'
-
-###########
-# SERVERS #
-###########
-alias marvin='ssh neektza@marvin.kset.org'
-alias roosta='ssh neektza@roosta.kset.org'
-alias magrathea='ssh neektza@magrathea.kset.org -p 1022'
-
-#########
-# RBENV #
-#########
+# Rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
 
-###################
-# OH MY ZSH begin # 
-###################
+# OH MY ZSH begin
 ZSH_THEME="afowler"
 plugins=(osx brew tmux git git-flow hub rbenv ruby gem bundler rails vagrant jekyll haskell cabal opam ctags lein)
+
+# Switch to /vagrant if in vagrant
+
 source $ZSH/oh-my-zsh.sh
