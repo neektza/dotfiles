@@ -3,7 +3,7 @@
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/dotfiles
 
-export PATH="$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
+export PATH="/opt/ruby-2.1.2/bin:$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 export PGDATA=/usr/local/var/postgres/
 export LEIN_JAVA_CMD=/usr/local/bin/drip
 export EDITOR=vim
@@ -51,6 +51,3 @@ export RBENV_ROOT=/usr/local/var/rbenv
 ZSH_THEME="afowler"
 plugins=(osx brew tmux git git-flow hub rbenv ruby gem bundler rails vagrant jekyll haskell cabal opam ctags lein)
 source $ZSH/oh-my-zsh.sh
-
-# added by travis gem
-source /Users/neektza/.travis/travis.sh
