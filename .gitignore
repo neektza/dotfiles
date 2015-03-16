@@ -1,0 +1,6 @@
+home/.vim/backup/*
+home/.vim/bundle
+home/.vim/plugged
+home/.vim/.NERDTreeBookmarks
+home/.vim/.netrwhist
+home/.vim/.viminfo
