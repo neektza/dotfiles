@@ -4,4 +4,4 @@
 :backtrace: false
 :bulk_threshold: 1000
 :benchmark: false
-:gem: --no-document
+:gem: --no-document --no-rdoc --no-ri 
