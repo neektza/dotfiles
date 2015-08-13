@@ -11,6 +11,7 @@
 	branch = auto
 [alias]
 	a = add
+	f = fetch
 	au = add -u
 	aa = add -A
 	st = status
@@ -23,6 +24,7 @@
 	sm = submodule
 	lg = log -p
 	rs = reset
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	l = "!source ~/.githelpers && pretty_git_log"
 	h= "!source ~/.githelpers && tree_hist"
 [difftool]
