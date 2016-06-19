@@ -3,8 +3,9 @@
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/dotfiles
 
-export PATH="/opt/ruby-2.1.2/bin:$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
+export PATH="$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export PGDATA=/usr/local/var/postgres/
+export PGDATABASE=postgres
 export LEIN_JAVA_CMD=/usr/local/bin/drip
 export EDITOR=vim
 export LC_CTYPE=en_US.UTF-8
@@ -15,11 +16,14 @@ unsetopt correct_all
 # Some commons
 alias v='vim'
 alias m='mvim'
-alias ml='LIGHT=1true vim'
+alias ml='LIGHT=1true mvim'
 alias ack='ack -r'
 alias grep='egrep -i'
 alias fs='foreman start'
 alias gti='git'
+
+alias resecto="mix ecto.drop && mix ecto.create && mix ecto.migrate && mix run priv/repo/seeds.exs"
+
 
 alias clrf="perl -pi -e 's/\r/\n/g'"
 
@@ -37,16 +41,15 @@ alias floatingpoint="ssh root@178.62.198.200"
 alias psql_bithub_dev="psql -h bithub.loc -U bithub bithub_development"
 alias psql_bithub_test="psql -h bithub.loc -U bithub bithub_test"
 
-# Rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
-
 # OH MY ZSH begin
 ZSH_THEME="afowler"
-plugins=(osx brew tmux git git-flow hub rbenv ruby gem bundler rails vagrant jekyll haskell cabal opam ctags lein)
-
-# Switch to /vagrant if in vagrant
-
+plugins=(osx brew tmux git git-flow gem rbenv mix cargo mvn)
 source $ZSH/oh-my-zsh.sh
 
-# added by travis gem
-source /Users/neektza/.travis/travis.sh
+# activate nvm
+. ~/.nvm/nvm.sh
+
+# load npm completion
+source ~/.npm_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
