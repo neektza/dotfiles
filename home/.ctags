@@ -1,0 +1,4 @@
+--langdef=Elixir
+--langmap=Elixir:+.ex.exs
+--regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_.]+)/\1/m,modules/
+--regex-elixir=/^[ \t]*defp?[ \t]+([a-zA-Z0-9_]+)/\1/f,functions/
