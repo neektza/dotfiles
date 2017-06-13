@@ -11,13 +11,20 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/yankring.vim'
+Plug 'tpope/vim-commentary'
+
+" Langs
+Plug 'elixir-lang/vim-elixir'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-liquid'
@@ -26,19 +33,15 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-obsession'
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
-Plug 'elixir-lang/vim-elixir'
 Plug 'rust-lang/rust.vim'
 Plug 'bruno-/vim-husk'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'flazz/vim-colorschemes'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'vim-scripts/YankRing.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'gkz/vim-ls'
 Plug 'rking/ag.vim'
-Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
@@ -55,6 +58,8 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'rizzatti/dash.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'mattn/emmet-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 call plug#end()
 
@@ -62,15 +67,16 @@ filetype plugin indent on
 
 syntax on
 
-" vim/macvim 
+" vim/macvim
 if has("gui_running")
 	" settings
 	set guioptions=egmrt
 	set winaltkeys=no
-	set macmeta
 	set transparency=0
 	set nobeval
 	set listchars=tab:>\ ,eol:¬
+	set macligatures
+	" set guifont=Fira\ Code:h14
 	set guifont=Liberation\ Mono\ for\ Powerline:h14
 	" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 	" set guifont=Inconsolata\ for\ Powerline:h15
@@ -188,7 +194,7 @@ nnoremap <F4> :set nolist wrap!<cr>
 map <f8> :%s/\s\+$//<cr>
 
 " silver surfer searcher
-nnoremap <leader>a :Ag -i 
+nnoremap <leader>a :Ag -i
 
 " fugitive (git)
 nnoremap <leader>gs :Gstatus<cr>
@@ -204,7 +210,7 @@ inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$']
 au Filetype nerdtree setlocal nolist
 
-" tagbar 
+" tagbar
 map <F2> :TagbarToggle<cr>
 let g:tagbar_autofocus=1
 
@@ -270,10 +276,10 @@ autocmd BufRead,BufNewFile *.md set complete+=kspell
 autocmd FileType gitcommit setlocal spell spelllang=en_us
 
 " rainbow parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 
 " vim-test
 nmap <silent> <leader>rn :TestNearest<cr>
@@ -299,11 +305,15 @@ let g:airline_powerline_fonts = 1
 " Markdown, disable folding
 let g:vim_markdown_folding_disabled=1
 
-" force old regex engine
-set re=1
-
 " word swapping
 :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
 :nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 :nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+
+
+" XML formatting
+:command FormatXML %!xmllint --format -
+
+" JSON formatting
+:command FormatJSON %!json_xs -f json -t json-pretty
