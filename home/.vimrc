@@ -19,6 +19,7 @@ Plug 'vim-scripts/yankring.vim'
 Plug 'tpope/vim-commentary'
 
 " Langs
+Plug 'jparise/vim-graphql'
 Plug 'elixir-lang/vim-elixir'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-rails'
@@ -43,8 +44,6 @@ Plug 'tomtom/tlib_vim'
 Plug 'gkz/vim-ls'
 Plug 'rking/ag.vim'
 Plug 'majutsushi/tagbar'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
 Plug 'vim-ruby/vim-ruby'
 Plug 'groenewege/vim-less'
 Plug 'plasticboy/vim-markdown'
@@ -86,7 +85,7 @@ else
 endif
 
 " colors
-set t_Co=256
+" set t_Co=256
 :if $LIGHT
 	:set background=light
 	:colorscheme pyte
@@ -210,10 +209,6 @@ inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$']
 au Filetype nerdtree setlocal nolist
 
-" tagbar
-map <F2> :TagbarToggle<cr>
-let g:tagbar_autofocus=1
-
 " ctrlp
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
@@ -276,10 +271,10 @@ autocmd BufRead,BufNewFile *.md set complete+=kspell
 autocmd FileType gitcommit setlocal spell spelllang=en_us
 
 " rainbow parens
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " vim-test
 nmap <silent> <leader>rn :TestNearest<cr>
@@ -303,7 +298,7 @@ nnoremap <C-e> $
 let g:airline_powerline_fonts = 1
 
 " Markdown, disable folding
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
 
 " word swapping
 :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
@@ -317,3 +312,28 @@ let g:vim_markdown_folding_disabled=1
 
 " JSON formatting
 :command FormatJSON %!json_xs -f json -t json-pretty
+
+" HTML formatting
+:command FormatHTML %!tidy -q -i --show-errors 0
+
+" tagbar
+map <F2> :TagbarToggle<cr>
+let g:tagbar_autofocus=1
+
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:tests'
+    \ ]
+\ }
