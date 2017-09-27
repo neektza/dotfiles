@@ -311,7 +311,7 @@ let g:vim_markdown_folding_disabled = 1
 :command FormatXML %!xmllint --format -
 
 " JSON formatting
-:command FormatJSON %!json_xs -f json -t json-pretty
+:command FormatJSON %!json_pp
 
 " HTML formatting
 :command FormatHTML %!tidy -q -i --show-errors 0
