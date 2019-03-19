@@ -1,7 +1,8 @@
 ---
-:verbose: true
-:update_sources: true
-:backtrace: false
-:bulk_threshold: 1000
-:benchmark: false
-:gem: --no-rdoc --no-ri
+gem: --no-rdoc --no-ri
+verbose: true
+update_sources: true
+backtrace: false
+bulk_threshold: 1000
+benchmark: false
+jobs: 8

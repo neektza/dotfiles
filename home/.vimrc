@@ -17,6 +17,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/yankring.vim'
 Plug 'tpope/vim-commentary'
+Plug 'slashmili/alchemist.vim'
 
 " Langs
 Plug 'jparise/vim-graphql'
@@ -33,6 +34,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-obsession'
 Plug 'benmills/vimux'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'edkolev/tmuxline.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'bruno-/vim-husk'
@@ -43,7 +45,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'gkz/vim-ls'
 Plug 'rking/ag.vim'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'vim-ruby/vim-ruby'
 Plug 'groenewege/vim-less'
 Plug 'plasticboy/vim-markdown'
@@ -56,9 +58,9 @@ Plug 'jonstoler/werewolf.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'rizzatti/dash.vim'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'mattn/emmet-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -207,6 +209,7 @@ nnoremap <leader>gmv :Gmove<cr>
 map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<cr>
 inoremap <F1> <esc>:NERDTreeToggle<cr>
 let NERDTreeIgnore=['.vim$']
+let NERDTreeShowHidden=1
 au Filetype nerdtree setlocal nolist
 
 " ctrlp
@@ -240,10 +243,6 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
-
-" Other shortcuts
-inoremap jj <Esc>l
-inoremap kk <Esc>l
 
 " up/down through wraps
 nnoremap j gj
@@ -296,6 +295,7 @@ nnoremap <C-e> $
 
 " airline
 let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1
 
 " Markdown, disable folding
 let g:vim_markdown_folding_disabled = 1
@@ -306,34 +306,39 @@ let g:vim_markdown_folding_disabled = 1
 :nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 :nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 
-
 " XML formatting
-:command FormatXML %!xmllint --format -
+:command! FormatXML %!xmllint --format -
 
 " JSON formatting
-:command FormatJSON %!json_pp
+:command! FormatJSON %!json_pp
 
 " HTML formatting
-:command FormatHTML %!tidy -q -i --show-errors 0
+:command! FormatHTML %!tidy -q -i --show-errors 0
 
-" tagbar
-map <F2> :TagbarToggle<cr>
-let g:tagbar_autofocus=1
+" YAML formatting
+:command! FormatYAML %!yamlint %
 
-let g:tagbar_type_elixir = {
-    \ 'ctagstype' : 'elixir',
-    \ 'kinds' : [
-        \ 'f:functions',
-        \ 'functions:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'm:modules',
-        \ 'p:protocols',
-        \ 'r:records',
-        \ 't:tests'
-    \ ]
-\ }
+" " gutentags
+" let g:gutentags_ctags_exclude=['.git', 'node_modules', 'deps', '_build']
+
+" " tagbar
+" map <F2> :TagbarToggle<cr>
+" let g:tagbar_autofocus=1
+
+" let g:tagbar_type_elixir = {
+"     \ 'ctagstype' : 'elixir',
+"     \ 'kinds' : [
+"         \ 'f:functions',
+"         \ 'functions:functions',
+"         \ 'c:callbacks',
+"         \ 'd:delegates',
+"         \ 'e:exceptions',
+"         \ 'i:implementations',
+"         \ 'a:macros',
+"         \ 'o:operators',
+"         \ 'm:modules',
+"         \ 'p:protocols',
+"         \ 'r:records',
+"         \ 't:tests'
+"     \ ]
+" \ }
