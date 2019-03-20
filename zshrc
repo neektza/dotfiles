@@ -13,10 +13,8 @@ export LANG=en_US.UTF-8
 unsetopt correct_all
 
 # Some commons
-alias v='LIGHT=1true vim'
-alias m='mvim'
-alias md='mvim'
-alias ml='LIGHT=1true mvim'
+alias viml='LIGHT=1true vim'
+alias vimd='vim'
 alias ack='ack -r'
 alias grep='egrep -i'
 alias fs='foreman start'
@@ -48,7 +46,7 @@ source ~/.fzf.zsh
 eval "$(direnv hook zsh)"
 
 # load denijev awesome tool
-eval "$(denv hook ZSH)"
+# eval "$(denv hook ZSH)"
 
 # # load asdf (extensible version manager)
 # . $HOME/.asdf/asdf.sh
