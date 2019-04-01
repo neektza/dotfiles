@@ -19,11 +19,24 @@ Plug 'vim-scripts/yankring.vim'
 Plug 'tpope/vim-commentary'
 Plug 'slashmili/alchemist.vim'
 
+" Language server support
+" Plug 'w0rp/ale'
+	
 " Langs
 Plug 'jparise/vim-graphql'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
+" Plug 'rust-lang/rust.vim'
+" Plug 'vim-ruby/vim-ruby'
+" Plug 'pangloss/vim-javascript'
+" Plug 'vim-scripts/nginx.vim'
+" Plug 'stephpy/vim-yaml'
+" Plug 'groenewege/vim-less'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'chriseppstein/vim-haml'
+" Plug 'guns/vim-clojure-static'
+" Plug 'hashivim/vim-terraform'
+
 Plug 'godlygeek/tabular'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
@@ -33,34 +46,30 @@ Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-obsession'
-Plug 'benmills/vimux'
-" Plug 'ludovicchabant/vim-gutentags'
-Plug 'edkolev/tmuxline.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'bruno-/vim-husk'
-Plug 'tmux-plugins/vim-tmux'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'gkz/vim-ls'
-Plug 'rking/ag.vim'
-" Plug 'majutsushi/tagbar'
-Plug 'vim-ruby/vim-ruby'
-Plug 'groenewege/vim-less'
-Plug 'plasticboy/vim-markdown'
-Plug 'chriseppstein/vim-haml'
-Plug 'pangloss/vim-javascript'
-Plug 'juvenn/mustache.vim'
-Plug 'vim-scripts/nginx.vim'
-Plug 'stephpy/vim-yaml'
-Plug 'jonstoler/werewolf.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'guns/vim-clojure-static'
-Plug 'rizzatti/dash.vim'
-Plug 'mattn/emmet-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'hashivim/vim-terraform'
+
+" tagbar
+" Plug 'majutsushi/tagbar'
+
+" tmux
+" Plug 'benmills/vimux'
+" Plug 'ludovicchabant/vim-gutentags'
+" Plug 'edkolev/tmuxline.vim'
+" Plug 'bruno-/vim-husk'
+" Plug 'tmux-plugins/vim-tmux'
+
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 call plug#end()
 
@@ -68,26 +77,20 @@ filetype plugin indent on
 
 syntax on
 
-" vim/macvim
+" vim/gvim/macvim
 if has("gui_running")
 	" settings
-	set guioptions=egmrt
+	set guioptions=egrt
 	set winaltkeys=no
-	set transparency=0
 	set nobeval
+	set belloff=all
 	set listchars=tab:>\ ,eol:¬
-	set macligatures
-	" set guifont=Fira\ Code:h14
-	set guifont=Liberation\ Mono\ for\ Powerline:h14
-	" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
-	" set guifont=Inconsolata\ for\ Powerline:h15
-	" set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
+	set clipboard=unnamedplus
 else
 	set clipboard=unnamed
 endif
 
 " colors
-" set t_Co=256
 :if $LIGHT
 	:set background=light
 	:colorscheme pyte
@@ -104,13 +107,6 @@ set shiftwidth=4
 set softtabstop=4
 set ffs=unix,dos
 
-" capistrano is Ruby
-autocmd BufRead,BufNewFile *.cap set filetype=ruby
-autocmd BufRead,BufNewFile Capfile set filetype=ruby
-
-" Ruby is spaces, not tabs
-autocmd Filetype ruby setlocal et ts=2 sts=2 sw=2
-
 " backup
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
@@ -118,7 +114,6 @@ set directory=~/.vim/tmp/swap//   " swap files
 set nobackup
 set nowritebackup
 set noswapfile
-
 " comments
 set encoding=utf-8
 set scrolloff=10
@@ -139,159 +134,102 @@ set norelativenumber
 set number
 set foldmethod=manual
 set mouse=a
-
 " include underscore in word movements
 set iskeyword+=_
-
 " wrapping
 set nowrap
 set linebreak
-"set textwidth=79
-"set nolinebreak
 set formatoptions=qrn1
-"set colorcolumn=85
-
 " leader
 let mapleader = "\<Space>"
-
 " search/move
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
 set gdefault "/g is default
 set incsearch
 set showmatch
 set hlsearch
-"nnoremap <tab> %
-"vnoremap <tab> %
-nnoremap <leader>, :noh<cr>
 
+" ---------------------
+" --- key mappings ----
+" ---------------------
+
+" folding
+nnoremap z<space> za
+xnoremap z<space> za
 " window, tab and split screen navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" tabs
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+" splits
 nnoremap <leader>_ :split<cr>
 nnoremap <leader>\| :vsplit<cr>
-nnoremap <D-1> 1gt
-nnoremap <D-2> 2gt
-nnoremap <D-3> 3gt
-nnoremap <D-4> 4gt
-
-" misc leader mappings
+nnoremap <leader>, :noh<cr>
+" alt as cmd
+nnoremap <M-t> :tabnew<cr>
+nnoremap <M-w> :close<cr>
+nnoremap <M-s> :w<cr>
+nnoremap <M-{> :tabprevious<cr>
+nnoremap <M-}> :tabnext<cr>
+" edit vimrc
 nnoremap <leader>ev :e $MYVIMRC<cr>
-
-" EOL chars
-nmap <F3> :set list!<cr>
-nnoremap <F4> :set nolist wrap!<cr>
-
-" Trailing whitespace removal
-map <f8> :%s/\s\+$//<cr>
-
-" silver surfer searcher
-nnoremap <leader>a :Ag -i
-
+" search
+nnoremap / /\v
+vnoremap / /\v
 " fugitive (git)
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove<cr>
-
-" nerdtree
-map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<cr>
-inoremap <F1> <esc>:NERDTreeToggle<cr>
-let NERDTreeIgnore=['.vim$']
-let NERDTreeShowHidden=1
-au Filetype nerdtree setlocal nolist
-
-" ctrlp
-let g:ctrlp_map = ''
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_open_new_file = 'v'
-let g:ctrlp_custom_ignore = { 'dir': 'node_modules\|bower_components\|DS_Store\|git' }
+" CtrlP
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <f5> :CtrlPClearCache<cr>
-set wildignore+=*/target/*,*/_build/*,*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
-
-" substitute under visual
-function! GetVisual() range
-	let reg_save = getreg('"')
-	let regtype_save = getregtype('"')
-	let cb_save = &clipboard
-	set clipboard&
-	normal! ""gvy
-	let selection = getreg('"')
-	call setreg('"', reg_save, regtype_save)
-	let &clipboard = cb_save
-	return selection
-endfunction
-vmap <leader>s :<c-U>%s/<c-r>=GetVisual()<cr>/
-
-" Various shortcuts for fugitive
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gcommit<cr>
-
+" nerdtree
+map <F1> :NERDTreeToggle \| :silent NERDTreeMirror<cr>
+inoremap <F1> <esc>:NERDTreeToggle<cr>
+" EOL chars
+nmap <F3> :set list!<cr>
+nnoremap <F4> :set nolist wrap!<cr>
 " up/down through wraps
 nnoremap j gj
 nnoremap k gk
-
-" folding
-nnoremap z<space> za
-xnoremap z<space> za
-
-" lambda shadowing, h4x0r
-" if has('conceal')
-" 	if has('autocmd')
-" 		autocmd Syntax * syn keyword Operator not conceal cchar=¬
-" 		autocmd Syntax * syn keyword Operator lambda conceal cchar=λ
-" 		autocmd Syntax ruby syn match rubyKeyword "->" conceal cchar=λ
-" 		autocmd Syntax haskell syn match hsKeyword "\\" conceal cchar=λ
-" 	endif
-" 	hi! link Conceal Operator
-" 	set conceallevel=2
-" endif
-
-" spellchecking
-autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.md set complete+=kspell
-autocmd FileType gitcommit setlocal spell spelllang=en_us
-
-" rainbow parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" vim-test
-nmap <silent> <leader>rn :TestNearest<cr>
-nmap <silent> <leader>rf :TestFile<cr>
-nmap <silent> <leader>rs :TestSuite<cr>
-nmap <silent> <leader>rl :TestLast<cr>
-nmap <silent> <leader>rv :TestVisit<cr>
-
-" syntastic
-" let g:syntastic_check_on_save=1
-" let g:syntastic_ruby_checkers=["mri", "rubocop"]
-
-" dash search
-:nmap <silent> <leader>d <Plug>DashSearch
-
-" emacs-like navigation
+" bash-like nav
 nnoremap <C-a> ^
 nnoremap <C-e> $
+" Trailing whitespace removal
+map <f8> :%s/\s\+$//<cr>
+
+" -----------------------
+" --- plugin settings ---
+" -----------------------
+
+" NERDTree
+let NERDTreeIgnore=['.vim$']
+let NERDTreeShowHidden=1
+
+" CtrlP
+let g:ctrlp_map = ''
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_open_new_file = 'v'
+let g:ctrlp_custom_ignore = { 'dir': 'node_modules\|bower_components\|DS_Store\|git' }
+set wildignore+=*/target/*,*/_build/*,*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -300,11 +238,45 @@ let g:airline_highlighting_cache = 1
 " Markdown, disable folding
 let g:vim_markdown_folding_disabled = 1
 
-" word swapping
-:nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+" ALE + Deoplete
+" let g:ale_elixir_elixir_ls_release = '/home/neektza/Work/elixir-ls/rel'
+" let g:ale_completion_enabled = 1
+" let g:deoplete#enable_at_startup = 1
 
-:nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
-:nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+" ---------------------
+" --- auto commands ---
+" ---------------------
+
+" Elixir 
+augroup elixir
+  autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
+augroup END
+
+" Capistrano
+autocmd BufRead,BufNewFile *.cap set filetype=ruby
+autocmd BufRead,BufNewFile Capfile set filetype=ruby
+
+" Ruby
+autocmd Filetype ruby setlocal et ts=2 sts=2 sw=2
+
+" Spellcheck
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.md set complete+=kspell
+autocmd FileType gitcommit setlocal spell spelllang=en_us
+
+" Rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" NERDTree
+au Filetype nerdtree setlocal nolist
+
+
+" -----------------------
+" --- custom commands ---
+" -----------------------
 
 " XML formatting
 :command! FormatXML %!xmllint --format -
@@ -317,6 +289,9 @@ let g:vim_markdown_folding_disabled = 1
 
 " YAML formatting
 :command! FormatYAML %!yamlint %
+
+
+
 
 " " gutentags
 " let g:gutentags_ctags_exclude=['.git', 'node_modules', 'deps', '_build']
