@@ -34,7 +34,7 @@ Plug 'elixir-editors/vim-elixir'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'chriseppstein/vim-haml'
 " Plug 'guns/vim-clojure-static'
-" Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform'
 
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
@@ -86,6 +86,7 @@ if has("gui_running")
 	set belloff=all
 	set listchars=tab:>\ ,eol:¬
 	set clipboard=unnamedplus
+	set guifont=DejaVu\ Sans\ Mono\ 14
 else
 	set clipboard=unnamed
 endif
@@ -154,6 +155,9 @@ set hlsearch
 " --- key mappings ----
 " ---------------------
 
+" remove word in insert mode
+inoremap <A-BS> <C-W>
+
 " folding
 nnoremap z<space> za
 xnoremap z<space> za
@@ -181,8 +185,9 @@ nnoremap <leader>, :noh<cr>
 nnoremap <M-t> :tabnew<cr>
 nnoremap <M-w> :close<cr>
 nnoremap <M-s> :w<cr>
-nnoremap <M-{> :tabprevious<cr>
-nnoremap <M-}> :tabnext<cr>
+" nnoremap <C-{> :tabprevious<cr>
+" nnoremap <C-}> :tabnext<cr>
+
 " edit vimrc
 nnoremap <leader>ev :e $MYVIMRC<cr>
 " search
