@@ -12,7 +12,6 @@ function _aws_profile_info() {
   local AWS_PS1_RESET_COLOR="${_AWS_PS1_OPEN_ESC}${_AWS_PS1_DEFAULT_FG}${_AWS_PS1_CLOSE_ESC}"
   
   [[ -z $AWS_PROFILE ]] && return
-  #echo "${ZSH_THEME_AWS_PREFIX:=<aws:}$(_kube_ps1_color_fg AWS_PS1_PROFILE_COLOR)${AWS_PROFILE}${AWS_PS1_RESET_COLOR}${ZSH_THEME_AWS_SUFFIX:=>}"
   echo "${ZSH_THEME_AWS_PREFIX:=<}$(_kube_ps1_color_fg $AWS_PS1_PROFILE_COLOR)${AWS_PROFILE}${AWS_PS1_RESET_COLOR}${ZSH_THEME_AWS_SUFFIX:=>}"
 }
 
@@ -75,7 +74,7 @@ plugins=(osx git git-flow docker kubectl kops terraform mix aws kube-ps1)
 source $ZSH/oh-my-zsh.sh
 
 # SHOW AWS and Kube context in PS1
-RPROMPT='$(_aws_profile_info)$(kube_ps1)'$RPROMPT
+RPROMPT='$(kube_ps1)$(_aws_profile_info)'$RPROMPT
 
 # Load fzf
 source ~/.fzf.zsh
