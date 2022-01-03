@@ -86,7 +86,7 @@ if has("gui_running")
 	set belloff=all
 	set listchars=tab:>\ ,eol:¬
 	set clipboard=unnamedplus
-	set guifont=DejaVu\ Sans\ Mono\ 14
+	set guifont=DejaVu\ Sans\ Mono\ 16
 else
 	set clipboard=unnamed
 endif
@@ -233,7 +233,7 @@ let NERDTreeShowHidden=1
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_open_new_file = 'v'
-let g:ctrlp_custom_ignore = { 'dir': 'node_modules\|bower_components\|DS_Store\|git' }
+let g:ctrlp_custom_ignore = { 'dir': '_builds\|deps\|node_modules\|bower_components\|DS_Store\|git' }
 set wildignore+=*/target/*,*/_build/*,*/tmp/*,*.so,*.swp,*.zip,*.log,.DS_Store
 
 " airline

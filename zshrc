@@ -26,18 +26,20 @@ export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PGDATABASE=postgres
-export KUBECONFIG=~/.kube/kubeconfig.yaml
 
 # Plugin settings - Kube PS1
-export KUBE_PS1_SYMBOL_ENABLE=false
-export KUBE_PS1_NS_ENABLE=false
-export KUBE_PS1_PREFIX="<"
-export KUBE_PS1_SUFFIX=">"
-export KUBE_PS1_CLUSTER_FUNCTION=_get_cluster_short
+# export KUBE_PS1_SYMBOL_ENABLE=false
+# export KUBE_PS1_NS_ENABLE=false
+# export KUBE_PS1_PREFIX="<"
+# export KUBE_PS1_SUFFIX=">"
+# export KUBE_PS1_CLUSTER_FUNCTION=_get_cluster_short
 
 # Plugin settings - AWS
 export SHOW_AWS_PROMPT=false
-export AWS_PS1_PROFILE_COLOR=cyan
+#export AWS_PS1_PROFILE_COLOR=cyan
+
+# Terraform advanced config - source_profile, arn ...
+export AWS_SDK_LOAD_CONFIG=1
 
 unsetopt correct_all
 
@@ -70,16 +72,23 @@ eval "$(direnv hook zsh)"
 
 # OH MY ZSH begin
 ZSH_THEME="sonicradish"
-plugins=(osx git git-flow docker kubectl kops terraform mix aws kube-ps1)
+plugins=(git git-flow docker kubectl kops terraform mix aws kube-ps1)
 source $ZSH/oh-my-zsh.sh
 
 # SHOW AWS and Kube context in PS1
-RPROMPT='$(kube_ps1)$(_aws_profile_info)'$RPROMPT
+# RPROMPT='$(kube_ps1)$(_aws_profile_info)'$RPROMPT
 
 # Load fzf
 source ~/.fzf.zsh
+
+# Load Krew (kubectl plugins)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Load ASDF path & completions
 export PATH=$PATH:$HOME/.asdf/bin
 source ~/.asdf/asdf.sh
 source ~/.asdf/completions/asdf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
