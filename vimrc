@@ -92,12 +92,12 @@ else
 endif
 
 " colors
-:if $LIGHT
-	:set background=light
-	:colorscheme pyte
-:else
+:if $DARK
 	:set background=dark
 	:colorscheme freya
+:else
+	:set background=light
+	:colorscheme pyte
 :end
 
 " tab and spaces
