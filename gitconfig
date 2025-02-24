@@ -5,6 +5,7 @@
 	username = neektza
 [core]
 	editor = vim
+	pager = bat --paging=always --style=numbers,changes
 [color]
 	status = auto
 	diff = auto
@@ -34,12 +35,15 @@
 	la = !git l --all
 	b = "!. ~/.githelpers && pretty_git_branch"
 	bs = "!. ~/.githelpers && pretty_git_branch_sorted"
-
+	batdiff = !git diff --name-only --diff-filter=d | xargs bat --diff
+	batlog = "!f() { git log --patch $@ | bat -l diff; }; f"
 
 [difftool]
 	tool = vimdiff
+	prompt = false
 [mergetool]
 	tool = vimdiff
+	prompt = false
 [merge]
 	tool = vimdiff
 [push]
@@ -48,3 +52,14 @@
 	defaultBranch = master
 [pull]
 	rebase = false
+[delta]
+	features = syntax-highlighting
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
