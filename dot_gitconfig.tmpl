@@ -1,8 +1,8 @@
 [user]
-	name = Nikica Jokic
-	email = neektza@gmail.com
+	name = {{ .name }}
+	email = {{ .email }}
 [credential "https://github.com"]
-	username = neektza
+	username = {{ .github_username }}
 [core]
 	editor = vim
 	pager = bat --paging=always --style=numbers,changes
