@@ -1,4 +1,3 @@
-{{ if eq .chezmoi.hostname "hermes-v2" -}}
 # Hermes CLI completions
 if command -v hermes >/dev/null 2>&1; then
   eval "$(hermes completion zsh)"
@@ -21,4 +20,3 @@ PROMPT="%F{178}%m%f${PROMPT#%m}"
 
 # Disable alternate scroll mode — prevents Ghostty from converting scroll wheel to arrow keys
 printf '[?1007l'
-{{ end -}}
