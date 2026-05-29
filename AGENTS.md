@@ -38,9 +38,9 @@ chezmoi apply --force
 
 ## What is NOT tracked
 
-- `~/.config/ghostty/` — Ghostty terminal config (managed separately)
 - `~/.claude/` — Claude Code config (managed separately)
 
 ## Conditional deployment
 
 - `~/.config/zellij/` — deployed only on hermes-v2, ignored on other hosts via `.chezmoiignore`
+- `~/.config/ghostty/` — deployed only on pwrbook (macOS), ignored on other hosts via `.chezmoiignore`

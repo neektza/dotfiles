@@ -5,3 +5,6 @@ LICENSE
 {{ if and (ne .chezmoi.hostname "hermes-v2") (ne .chezmoi.hostname "pwrbook") }}
 .config/zellij
 {{ end }}
+{{ if ne .chezmoi.hostname "pwrbook" }}
+.config/ghostty
+{{ end }}
