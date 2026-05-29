@@ -83,5 +83,27 @@ command -v trackframe &>/dev/null && eval "$(trackframe completion zsh)"
 bindkey "\e[1;3C" forward-word
 bindkey "\e[1;3D" backward-word
 
+# Zellij aliases and completions
+if command -v zellij &>/dev/null; then
+  alias za='zellij attach'
+  alias zl='zellij list-sessions'
+  alias zk='zellij kill-session'
+  alias zka='zellij kill-all-sessions'
+  alias zd='zellij delete-session'
+  alias zda='zellij delete-all-sessions'
+  alias zw='zellij watch'
+
+  # load built-in completions for the zellij command
+  source <(zellij setup --generate-completion zsh 2>/dev/null)
+
+  # session name completion for aliases that take a session argument
+  _zellij_sessions() {
+    local sessions
+    sessions=(${(f)"$(zellij list-sessions 2>/dev/null | awk '{print $1}')"})
+    _describe 'sessions' sessions
+  }
+  compdef '_arguments "1:session:_zellij_sessions"' za zk zd zw
+fi
+
 # per-host config (dotfiles/zshrc.d/<hostname>.zsh)
 [[ -f $DOTFILES/zshrc.d/$(hostname).zsh ]] && source $DOTFILES/zshrc.d/$(hostname).zsh
