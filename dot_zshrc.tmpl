@@ -83,6 +83,9 @@ command -v trackframe &>/dev/null && eval "$(trackframe completion zsh)"
 bindkey "\e[1;3C" forward-word
 bindkey "\e[1;3D" backward-word
 
+# Ghostty profile helpers (gop, gth, gth-list)
+[[ -f ~/.config/ghostty/profiles.zsh ]] && source ~/.config/ghostty/profiles.zsh
+
 # Zellij aliases and completions
 if command -v zellij &>/dev/null; then
   alias za='zellij attach'
