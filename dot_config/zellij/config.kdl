@@ -153,6 +153,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
+        bind "Ctrl Alt t" { NewTab; SwitchToMode "normal"; }
         bind "Ctrl Alt 1" { GoToTab 1; SwitchToMode "normal"; }
         bind "Ctrl Alt 2" { GoToTab 2; SwitchToMode "normal"; }
         bind "Ctrl Alt 3" { GoToTab 3; SwitchToMode "normal"; }

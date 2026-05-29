@@ -53,7 +53,7 @@ keybind = cmd+9=text:\x1b[57;7u
 keybind = cmd+0=text:\x1b[48;7u
 
 # --- iTerm-style keybinds ---
-keybind = cmd+t=new_tab
+keybind = cmd+t=text:\x1b[116;7u
 keybind = cmd+n=new_window
 keybind = cmd+w=close_surface
 keybind = cmd+shift+w=close_window
