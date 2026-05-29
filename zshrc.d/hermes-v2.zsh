@@ -19,4 +19,4 @@ alias logs-admin='journalctl --user -u trackframe-hub-admin.service -n 100 -f'
 PROMPT="%F{178}%m%f${PROMPT#%m}"
 
 # Disable alternate scroll mode — prevents Ghostty from converting scroll wheel to arrow keys
-printf '[?1007l'
+printf '\e[?1007l'
