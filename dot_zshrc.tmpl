@@ -83,7 +83,8 @@ command -v trackframe &>/dev/null && eval "$(trackframe completion zsh)"
 bindkey "\e[1;3C" forward-word
 bindkey "\e[1;3D" backward-word
 
-# Ghostty profile helpers (gop, gth, gth-list)
+# Ghostty helpers
+[[ -f ~/.config/ghostty/themes.zsh ]] && source ~/.config/ghostty/themes.zsh
 [[ -f ~/.config/ghostty/profiles.zsh ]] && source ~/.config/ghostty/profiles.zsh
 
 # Zellij aliases and completions
