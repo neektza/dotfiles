@@ -82,3 +82,6 @@ command -v trackframe &>/dev/null && eval "$(trackframe completion zsh)"
 # opt+arrow word navigation (ghostty unbinds alt+arrows, macos-option-as-alt sends \e[1;3C/D)
 bindkey "\e[1;3C" forward-word
 bindkey "\e[1;3D" backward-word
+
+# machine-local overrides (not tracked in dotfiles)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
