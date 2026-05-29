@@ -49,7 +49,7 @@ ZSH_THEME="ys"
 ZSH_THEME="ys"
 {{- end }}
 {{ if eq .chezmoi.os "darwin" -}}
-plugins=(git fzf asdf brew docker kubectl terraform npm node)
+plugins=(git fzf brew docker npm node)
 {{ else -}}
 plugins=(git fzf docker npm node)
 {{ end -}}
