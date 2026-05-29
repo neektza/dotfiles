@@ -86,7 +86,12 @@ bindkey "\e[1;3D" backward-word
 # Ghostty helpers
 [[ -f ~/.config/ghostty/themes.zsh ]] && source ~/.config/ghostty/themes.zsh
 {{- if eq .chezmoi.hostname "hermes-v2" }}
-if [[ "${LC_APPEARANCE}" == "dark" ]]; then gth dark-remote; else gth light-remote; fi
+export GTH_CONTEXT=remote
+{{- else }}
+export GTH_CONTEXT=local
+{{- end }}
+{{- if eq .chezmoi.hostname "hermes-v2" }}
+if [[ "${LC_APPEARANCE}" == "dark" ]]; then gth dark; else gth light; fi
 {{- end }}
 
 # Zellij aliases and completions
