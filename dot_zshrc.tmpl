@@ -86,10 +86,7 @@ bindkey "\e[1;3D" backward-word
 # Ghostty helpers
 [[ -f ~/.config/ghostty/themes.zsh ]] && source ~/.config/ghostty/themes.zsh
 {{- if eq .chezmoi.hostname "hermes-v2" }}
-# repaint terminal to remote theme (maroon) via OSC sequences
-printf '\e]10;#839496\a'   # foreground
-printf '\e]11;#1a0505\a'   # background
-printf '\e]12;#dc322f\a'   # cursor
+gth remote
 {{- end }}
 
 # Zellij aliases and completions
