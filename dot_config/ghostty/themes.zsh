@@ -21,9 +21,9 @@ gth() {
     return 1
   fi
   local f="$_ghostty_themes_dir/it-$name.conf"
-  if [[ ! -f "$f" && -n "$GTH_CONTEXT" ]]; then
-    name="${name}-${GTH_CONTEXT}"
-    f="$_ghostty_themes_dir/it-$name.conf"
+  if [[ -n "$GTH_CONTEXT" ]]; then
+    local cf="$_ghostty_themes_dir/it-$name-${GTH_CONTEXT}.conf"
+    [[ -f "$cf" ]] && f="$cf" && name="${name}-${GTH_CONTEXT}"
   fi
   if [[ ! -f "$f" ]]; then
     echo "no such theme: $1" >&2
