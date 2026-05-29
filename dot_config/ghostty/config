@@ -14,7 +14,7 @@ macos-titlebar-style = transparent
 macos-option-as-alt = true
 
 # --- default theme, auto-switches with macOS appearance ---
-theme = dark:/Users/neektza/.config/ghostty/themes/it-dark-local.conf,light:/Users/neektza/.config/ghostty/themes/it-light-local.conf
+theme = dark:/Users/neektza/.config/ghostty/themes/dark-local.conf,light:/Users/neektza/.config/ghostty/themes/light-local.conf
 
 # --- unbind default word-movement so opt+arrows send \e[1;3C/D to remote ---
 keybind = alt+left=unbind

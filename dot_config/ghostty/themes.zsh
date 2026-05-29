@@ -2,27 +2,27 @@
 
 _ghostty_themes_dir="$HOME/.config/ghostty/themes"
 
-# List available themes (strips it- prefix, context suffix, and .conf for display).
+# List available themes (strips  prefix, context suffix, and .conf for display).
 gth-list() {
-  ls -1 "$_ghostty_themes_dir"/it-*.conf 2>/dev/null \
+  ls -1 "$_ghostty_themes_dir"/*.conf 2>/dev/null \
     | xargs -n1 basename \
-    | sed 's/^it-//; s/\.conf$//' \
+    | sed 's/^//; s/\.conf$//' \
     | sed "s/-${GTH_CONTEXT}$//" \
     | sort -u
 }
 
 # Repaint the CURRENT terminal window using a theme file via OSC sequences.
 # If the exact theme file doesn't exist and GTH_CONTEXT is set, appends context
-# automatically: gth dark → it-dark-local.conf or it-dark-remote.conf
+# automatically: gth dark → dark-local.conf or dark-remote.conf
 gth() {
   local name="$1"
   if [[ -z "$name" ]]; then
     echo "usage: gth <theme>   themes: $(gth-list | tr '\n' ' ')"
     return 1
   fi
-  local f="$_ghostty_themes_dir/it-$name.conf"
+  local f="$_ghostty_themes_dir/$name.conf"
   if [[ -n "$GTH_CONTEXT" ]]; then
-    local cf="$_ghostty_themes_dir/it-$name-${GTH_CONTEXT}.conf"
+    local cf="$_ghostty_themes_dir/$name-${GTH_CONTEXT}.conf"
     [[ -f "$cf" ]] && f="$cf" && name="${name}-${GTH_CONTEXT}"
   fi
   if [[ ! -f "$f" ]]; then
