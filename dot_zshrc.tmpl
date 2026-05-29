@@ -41,7 +41,13 @@ alias clrf="perl -pi -e 's/\r/\n/g'"
 eval "$(direnv hook zsh)"
 
 # OH MY ZSH begin
+{{- if eq .chezmoi.hostname "pwrbook" }}
+ZSH_THEME="sonicradish"
+{{- else if eq .chezmoi.hostname "hermes-v2" }}
 ZSH_THEME="ys"
+{{- else }}
+ZSH_THEME="ys"
+{{- end }}
 {{ if eq .chezmoi.os "darwin" -}}
 plugins=(git fzf asdf brew docker kubectl terraform npm node)
 {{ else -}}
