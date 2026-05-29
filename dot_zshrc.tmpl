@@ -93,8 +93,13 @@ if command -v zellij &>/dev/null; then
   alias zda='zellij delete-all-sessions'
   alias zw='zellij watch'
 
-  # load built-in completions for the zellij command
-  source <(zellij setup --generate-completion zsh 2>/dev/null)
+  # write completions to fpath once (regenerate if zellij binary is newer)
+  _zellij_comp_file="${HOME}/.zfunc/_zellij"
+  if [[ ! -f "$_zellij_comp_file" || "$(command -v zellij)" -nt "$_zellij_comp_file" ]]; then
+    mkdir -p "${HOME}/.zfunc"
+    zellij setup --generate-completion zsh >! "$_zellij_comp_file" 2>/dev/null
+  fi
+  fpath=("${HOME}/.zfunc" $fpath)
 
   # session name completion for aliases that take a session argument
   _zellij_sessions() {
