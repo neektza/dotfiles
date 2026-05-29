@@ -112,13 +112,14 @@ if command -v zellij &>/dev/null; then
   if [[ ! -f "$_zellij_comp_file" || "$(command -v zellij)" -nt "$_zellij_comp_file" ]]; then
     mkdir -p "${HOME}/.zfunc"
     zellij setup --generate-completion zsh >! "$_zellij_comp_file" 2>/dev/null
-    # patch: wire session-name argument to live session lookup
+    # patch: wire session-name argument to live session lookup, remove attach subcommands
     sed -i 's/::session-name -- Name of the session to attach to:/::session-name -- Name of the session to attach to:_zellij_sessions/' "$_zellij_comp_file"
+    sed -i '/":: :_zellij__attach_commands"/d' "$_zellij_comp_file"
   fi
   # session name completion for aliases that take a session argument
   _zellij_sessions() {
     local sessions
-    sessions=(${(f)"$(zellij list-sessions 2>/dev/null | awk '{print $1}')"})
+    sessions=(${(f)"$(zellij list-sessions 2>/dev/null | awk '{print $1}' | sed 's/\x1b\[[0-9;]*m//g')"})
     _describe 'sessions' sessions
   }
   _zellij_session_cmd() { _arguments '1:session:_zellij_sessions' }
