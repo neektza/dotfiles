@@ -153,6 +153,16 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
+        bind "Ctrl Alt 1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "Ctrl Alt 2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "Ctrl Alt 3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "Ctrl Alt 4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "Ctrl Alt 5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "Ctrl Alt 6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "Ctrl Alt 7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "Ctrl Alt 8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "Ctrl Alt 9" { GoToTab 9; SwitchToMode "normal"; }
+        bind "Ctrl Alt 0" { GoToTab 10; SwitchToMode "normal"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
