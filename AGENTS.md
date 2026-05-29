@@ -40,6 +40,16 @@ chezmoi apply --force
 
 - `~/.claude/` — Claude Code config (managed separately)
 
+## Themes
+
+Ghostty and Zellij themes must be kept in sync — both need to support the same theme name. When changing themes, verify the name exists in both:
+- Ghostty built-ins: `ghostty +list-themes`
+- Zellij built-ins: https://zellij.dev/documentation/theme-list
+
+Current themes: dark=Dracula, light=Catppuccin Latte (set in both `dot_config/ghostty/config` and `dot_config/zellij/config.kdl`).
+
+Remote terminal (hermes) uses Chester (dark) and Kanso Pearl (light), applied via OSC sequences in `dot_config/ghostty/themes.zsh`.
+
 ## Conditional deployment
 
 - `~/.config/zellij/` — deployed only on hermes-v2, ignored on other hosts via `.chezmoiignore`
