@@ -102,7 +102,8 @@ if command -v zellij &>/dev/null; then
     sessions=(${(f)"$(zellij list-sessions 2>/dev/null | awk '{print $1}')"})
     _describe 'sessions' sessions
   }
-  compdef '_arguments "1:session:_zellij_sessions"' za zk zd zw
+  _zellij_session_cmd() { _arguments '1:session:_zellij_sessions' }
+  compdef _zellij_session_cmd za zk zd zw
 fi
 
 # per-host config (dotfiles/zshrc.d/<hostname>.zsh)
