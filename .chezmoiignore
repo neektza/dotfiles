@@ -2,3 +2,6 @@ README.md
 LICENSE
 .chezmoiignore
 .chezmoi.toml.tmpl
+{{ if ne .chezmoi.hostname "hermes-v2" }}
+.config/zellij
+{{ end }}
