@@ -61,36 +61,36 @@ _gth_send_builtin() {
   local esc=$'\033' bel=$'\007'
   case "$name" in
     dark)
-      # Chester
-      printf "%s]4;0;#080200%s"  "$esc" "$bel"; printf "%s]4;1;#fa5e5b%s"  "$esc" "$bel"
-      printf "%s]4;2;#16c98d%s"  "$esc" "$bel"; printf "%s]4;3;#ffc83f%s"  "$esc" "$bel"
-      printf "%s]4;4;#288ad6%s"  "$esc" "$bel"; printf "%s]4;5;#d34590%s"  "$esc" "$bel"
-      printf "%s]4;6;#28ddde%s"  "$esc" "$bel"; printf "%s]4;7;#e7e7e7%s"  "$esc" "$bel"
-      printf "%s]4;8;#6f6b68%s"  "$esc" "$bel"; printf "%s]4;9;#fa5e5b%s"  "$esc" "$bel"
-      printf "%s]4;10;#16c98d%s" "$esc" "$bel"; printf "%s]4;11;#feef6d%s" "$esc" "$bel"
-      printf "%s]4;12;#278ad6%s" "$esc" "$bel"; printf "%s]4;13;#d34590%s" "$esc" "$bel"
-      printf "%s]4;14;#27dede%s" "$esc" "$bel"; printf "%s]4;15;#ffffff%s" "$esc" "$bel"
-      printf "%s]11;#2c3643%s" "$esc" "$bel"   # background
-      printf "%s]10;#ffffff%s" "$esc" "$bel"   # foreground
-      printf "%s]12;#b4b1b1%s" "$esc" "$bel"   # cursor
-      printf "%s]17;#67747c%s" "$esc" "$bel"   # selection-background
-      printf "%s]19;#ffffff%s" "$esc" "$bel"   # selection-foreground
+      # Earthsong
+      printf "%s]4;0;#121418%s"  "$esc" "$bel"; printf "%s]4;1;#c94234%s"  "$esc" "$bel"
+      printf "%s]4;2;#85c54c%s"  "$esc" "$bel"; printf "%s]4;3;#f5ae2e%s"  "$esc" "$bel"
+      printf "%s]4;4;#1398b9%s"  "$esc" "$bel"; printf "%s]4;5;#d0633d%s"  "$esc" "$bel"
+      printf "%s]4;6;#509552%s"  "$esc" "$bel"; printf "%s]4;7;#e5c6aa%s"  "$esc" "$bel"
+      printf "%s]4;8;#675f54%s"  "$esc" "$bel"; printf "%s]4;9;#ff645a%s"  "$esc" "$bel"
+      printf "%s]4;10;#98e036%s" "$esc" "$bel"; printf "%s]4;11;#e0d561%s" "$esc" "$bel"
+      printf "%s]4;12;#5fdaff%s" "$esc" "$bel"; printf "%s]4;13;#ff9269%s" "$esc" "$bel"
+      printf "%s]4;14;#84f088%s" "$esc" "$bel"; printf "%s]4;15;#f6f7ec%s" "$esc" "$bel"
+      printf "%s]11;#292520%s" "$esc" "$bel"   # background
+      printf "%s]10;#e5c7a9%s" "$esc" "$bel"   # foreground
+      printf "%s]12;#f6f7ec%s" "$esc" "$bel"   # cursor
+      printf "%s]17;#121418%s" "$esc" "$bel"   # selection-background
+      printf "%s]19;#e5c7a9%s" "$esc" "$bel"   # selection-foreground
       ;;
     light)
-      # Kanso Pearl
-      printf "%s]4;0;#22262d%s"  "$esc" "$bel"; printf "%s]4;1;#c84053%s"  "$esc" "$bel"
-      printf "%s]4;2;#6f894e%s"  "$esc" "$bel"; printf "%s]4;3;#77713f%s"  "$esc" "$bel"
-      printf "%s]4;4;#4d699b%s"  "$esc" "$bel"; printf "%s]4;5;#b35b79%s"  "$esc" "$bel"
-      printf "%s]4;6;#597b75%s"  "$esc" "$bel"; printf "%s]4;7;#545464%s"  "$esc" "$bel"
-      printf "%s]4;8;#6d6f6e%s"  "$esc" "$bel"; printf "%s]4;9;#d7474b%s"  "$esc" "$bel"
-      printf "%s]4;10;#6e915f%s" "$esc" "$bel"; printf "%s]4;11;#836f4a%s" "$esc" "$bel"
-      printf "%s]4;12;#6693bf%s" "$esc" "$bel"; printf "%s]4;13;#624c83%s" "$esc" "$bel"
-      printf "%s]4;14;#5e857a%s" "$esc" "$bel"; printf "%s]4;15;#43436c%s" "$esc" "$bel"
-      printf "%s]11;#f2f1ef%s" "$esc" "$bel"   # background
-      printf "%s]10;#22262d%s" "$esc" "$bel"   # foreground
-      printf "%s]12;#22262d%s" "$esc" "$bel"   # cursor
-      printf "%s]17;#e2e1df%s" "$esc" "$bel"   # selection-background
-      printf "%s]19;#22262d%s" "$esc" "$bel"   # selection-foreground
+      # Ayu Light
+      printf "%s]4;0;#000000%s"  "$esc" "$bel"; printf "%s]4;1;#ea6c6d%s"  "$esc" "$bel"
+      printf "%s]4;2;#6cbf43%s"  "$esc" "$bel"; printf "%s]4;3;#eca944%s"  "$esc" "$bel"
+      printf "%s]4;4;#3199e1%s"  "$esc" "$bel"; printf "%s]4;5;#9e75c7%s"  "$esc" "$bel"
+      printf "%s]4;6;#46ba94%s"  "$esc" "$bel"; printf "%s]4;7;#bababa%s"  "$esc" "$bel"
+      printf "%s]4;8;#686868%s"  "$esc" "$bel"; printf "%s]4;9;#f07171%s"  "$esc" "$bel"
+      printf "%s]4;10;#86b300%s" "$esc" "$bel"; printf "%s]4;11;#f2ae49%s" "$esc" "$bel"
+      printf "%s]4;12;#399ee6%s" "$esc" "$bel"; printf "%s]4;13;#a37acc%s" "$esc" "$bel"
+      printf "%s]4;14;#4cbf99%s" "$esc" "$bel"; printf "%s]4;15;#d1d1d1%s" "$esc" "$bel"
+      printf "%s]11;#f8f9fa%s" "$esc" "$bel"   # background
+      printf "%s]10;#5c6166%s" "$esc" "$bel"   # foreground
+      printf "%s]12;#ffaa33%s" "$esc" "$bel"   # cursor
+      printf "%s]17;#035bd6%s" "$esc" "$bel"   # selection-background
+      printf "%s]19;#f8f9fa%s" "$esc" "$bel"   # selection-foreground
       ;;
     *)
       echo "no such theme: $name" >&2
