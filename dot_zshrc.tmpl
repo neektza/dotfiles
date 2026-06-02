@@ -94,7 +94,11 @@ export GTH_CONTEXT=remote
 export GTH_CONTEXT=local
 {{- end }}
 {{- if eq .chezmoi.hostname "hermes-v2" }}
-if [[ "${LC_APPEARANCE}" == "dark" ]]; then gth dark; else gth light; fi
+# Write hint file for nvim from LC_APPEARANCE (forwarded over SSH from macOS).
+# Don't call gth — Ghostty owns the palette, zellij reads OSC 11 from it.
+if [[ -n "${LC_APPEARANCE}" ]]; then
+  echo "${LC_APPEARANCE}" > ~/.background_hint
+fi
 {{- end }}
 
 # Zellij aliases and completions

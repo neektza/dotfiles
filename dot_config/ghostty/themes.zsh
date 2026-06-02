@@ -31,6 +31,9 @@ gth() {
   else
     _gth_send_builtin "$name"
   fi
+
+  # write hint for nvim (OSC 11 doesn't survive mosh)
+  echo "$name" > ~/.background_hint
 }
 
 _gth_send_file() {
