@@ -113,15 +113,19 @@ require("lazy").setup({
     end,
   },
 
-  -- ── treesitter: syntax + elixir + graphql ──────────────────────────────
+  -- ── treesitter: syntax + indentation ────────────────────────────────────
+  -- Using main branch (master archived Apr 2026) + treesitter-modules.nvim
+  -- which restores ensure_installed, highlight, indent APIs.
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build  = ":TSUpdate",
-    event  = { "BufReadPost", "BufNewFile" },
+    lazy   = false,
+    dependencies = {
+      "MeanderingProgrammer/treesitter-modules.nvim",
+    },
     config = function()
-      local ok, configs = pcall(require, "nvim-treesitter.configs")
-      if not ok then return end
-      configs.setup({
+      require("treesitter-modules").setup({
         ensure_installed = {
           "lua", "vim", "vimdoc",
           "python",
@@ -129,12 +133,13 @@ require("lazy").setup({
           "graphql",
           "ruby",
           "terraform", "hcl",
-          "markdown", "yaml", "json",
-          "html", "css",
+          "markdown", "markdown_inline", "yaml", "json",
+          "html", "css", "sql",
         },
-        highlight    = { enable = true },
-        indent       = { enable = true },
-        auto_install = true,
+        sync_install  = false,
+        auto_install  = true,
+        highlight     = { enable = true },
+        indent        = { enable = true },
       })
     end,
   },
