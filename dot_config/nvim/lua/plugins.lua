@@ -188,6 +188,10 @@ require("lazy").setup({
       vim.lsp.config("ts_ls", { capabilities = capabilities })
       vim.lsp.enable("ts_ls")
 
+      -- Markdown
+      vim.lsp.config("marksman", { capabilities = capabilities })
+      vim.lsp.enable("marksman")
+
       -- keymaps (only active when LSP is attached to buffer)
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
