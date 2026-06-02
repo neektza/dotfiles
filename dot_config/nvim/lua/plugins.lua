@@ -40,12 +40,24 @@ require("lazy").setup({
   -- ── file finder (replaces CtrlP) ───────────────────────────────────────
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      defaults = {
-        file_ignore_patterns = { "_build", "deps", "node_modules", ".git" },
-      },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
+    config = function()
+      require("telescope").setup({
+        defaults = {
+          file_ignore_patterns = { "_build", "deps", "node_modules", ".git" },
+        },
+      })
+      require("telescope").load_extension("fzf")
+    end,
+  },
+
+  -- ── fzf sorter for telescope (requires make + gcc) ──────────────────────
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
   },
 
   -- ── file tree (replaces NERDTree) ──────────────────────────────────────
@@ -175,6 +187,56 @@ require("lazy").setup({
     end,
   },
 
+  -- ── conform: formatting ─────────────────────────────────────────────────
+  {
+    "stevearc/conform.nvim",
+    event = "BufWritePre",
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          python     = { "ruff_format" },
+          typescript = { "prettierd" },
+          typescriptreact = { "prettierd" },
+          javascript = { "prettierd" },
+          javascriptreact = { "prettierd" },
+          markdown   = { "prettierd" },
+          sql        = { "sql_formatter" },
+          lua        = { "stylua" },
+        },
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+      })
+    end,
+  },
+
+  -- ── flash: fast motions/jumping ─────────────────────────────────────────
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,   desc = "Flash jump" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash treesitter" },
+    },
+  },
+
+  -- ── harpoon: fast file switching ────────────────────────────────────────
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
+  -- ── which-key: keybind hints ────────────────────────────────────────────
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
   -- ── zellij pane navigation ──────────────────────────────────────────────
   {
     "swaits/zellij-nav.nvim",
@@ -189,10 +251,44 @@ require("lazy").setup({
     opts = {},
   },
 
-  -- ── LSP ────────────────────────────────────────────────────────────────
+  -- ── Mason: LSP server manager ───────────────────────────────────────────
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    opts = {},
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      ensure_installed = { "pyright", "ts_ls", "marksman" },
+      automatic_enable = true,
+    },
+  },
+
+  -- ── mason-tool-installer: auto-install formatters/linters ───────────────
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = {
+      ensure_installed = {
+        "prettierd",
+        "stylua",
+        "sql-formatter",
+      },
+      auto_update = false,
+      run_on_start = true,
+    },
+  },
+
+  -- ── LSP + completion ─────────────────────────────────────────────────────
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "williamboman/mason-lspconfig.nvim",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -201,17 +297,9 @@ require("lazy").setup({
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- Python
-      vim.lsp.config("pyright", { capabilities = capabilities })
-      vim.lsp.enable("pyright")
-
-      -- TypeScript / JavaScript
-      vim.lsp.config("ts_ls", { capabilities = capabilities })
-      vim.lsp.enable("ts_ls")
-
-      -- Markdown
-      vim.lsp.config("marksman", { capabilities = capabilities })
-      vim.lsp.enable("marksman")
+      -- Set capabilities globally — mason-lspconfig's automatic_enable picks this up
+      -- for every server it enables, so no explicit per-server config needed.
+      vim.lsp.config("*", { capabilities = capabilities })
 
       -- keymaps (only active when LSP is attached to buffer)
       vim.api.nvim_create_autocmd("LspAttach", {

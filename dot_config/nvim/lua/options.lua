@@ -37,7 +37,18 @@ opt.modelines  = 0
 opt.compatible = false
 opt.mouse      = "a"
 opt.backspace  = { "indent", "eol", "start" }
--- clipboard: use system clipboard via OSC 52 (works over SSH with Ghostty)
+-- clipboard: OSC 52 (works over SSH with Ghostty, no xclip/xsel needed)
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+}
 opt.clipboard = "unnamedplus"
 
 -- wildmenu

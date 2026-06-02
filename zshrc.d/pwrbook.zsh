@@ -6,3 +6,9 @@ if [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == "Dark" ]]; then
 else
   export LC_APPEARANCE=light
 fi
+
+# zoxide: smart cd with frecency (zi for interactive picker)
+# install with: brew install zoxide
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi

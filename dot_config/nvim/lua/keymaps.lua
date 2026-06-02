@@ -12,20 +12,27 @@ map("x", "z<space>", "za")
 -- window navigation handled by zellij-nav.nvim
 
 -- tab switching
-for i = 1, 5 do
-  map("n", "<leader>" .. i, i .. "gt")
-  map("n", "<M-" .. i .. ">", i .. "gt")
-end
+map("n", "<leader>t[", ":tabprev<cr>")
+map("n", "<leader>t]", ":tabnext<cr>")
+
+-- harpoon
+map("n", "<leader>a",  function() require("harpoon"):list():add() end)
+map("n", "<C-e>",      function() local h = require("harpoon"); h.ui:toggle_quick_menu(h:list()) end)
+map("n", "<leader>1",  function() require("harpoon"):list():select(1) end)
+map("n", "<leader>2",  function() require("harpoon"):list():select(2) end)
+map("n", "<leader>3",  function() require("harpoon"):list():select(3) end)
+map("n", "<leader>4",  function() require("harpoon"):list():select(4) end)
 
 -- splits
 map("n", "<leader>_",  ":split<cr>")
 map("n", "<leader>|",  ":vsplit<cr>")
 map("n", "<leader>,",  ":noh<cr>")
 
--- alt shortcuts
-map("n", "<M-t>", ":tabnew<cr>")
-map("n", "<M-w>", ":close<cr>")
-map("n", "<M-s>", ":w<cr>")
+-- save
+map("n", "<leader>w", ":w<cr>")
+
+-- format
+map("n", "<leader>F", function() require("conform").format({ async = true, lsp_fallback = true }) end)
 
 -- edit config
 map("n", "<leader>ev", ":e $MYVIMRC<cr>")
@@ -69,6 +76,8 @@ map("n", "<F8>", ":%s/\\s\\+$//<cr>")
 map("n", "j", "gj")
 map("n", "k", "gk")
 
--- bash-like line nav
-map("n", "<C-a>", "^")
-map("n", "<C-e>", "$")
+-- faster line start/end
+map("n", "H", "^")
+map("n", "L", "$")
+map("v", "H", "^")
+map("v", "L", "$")

@@ -3,6 +3,9 @@ if command -v hermes >/dev/null 2>&1; then
   eval "$(hermes completion zsh)"
 fi
 
+# zoxide: smart cd with frecency (zi for interactive picker)
+eval "$(zoxide init zsh)"
+
 . "$HOME/.local/bin/env"
 export PATH=$PATH:$HOME/.hermes/node/bin:$HOME/.local/bin
 
