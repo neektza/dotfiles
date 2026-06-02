@@ -37,7 +37,8 @@ opt.modelines  = 0
 opt.compatible = false
 opt.mouse      = "a"
 opt.backspace  = { "indent", "eol", "start" }
-opt.clipboard  = "unnamed"
+-- clipboard: use system clipboard via OSC 52 (works over SSH with Ghostty)
+opt.clipboard = "unnamedplus"
 
 -- wildmenu
 opt.wildmenu = true

@@ -34,13 +34,9 @@ map("n", "<leader>ev", ":e $MYVIMRC<cr>")
 map("n", "/", "/\\v")
 map("v", "/", "/\\v")
 
--- fugitive (git)
-map("n", "<leader>gw",  ":Gwrite<cr>")
-map("n", "<leader>gr",  ":Gread<cr>")
-map("n", "<leader>gs",  ":Git<cr>")          -- Gstatus -> :Git in modern fugitive
-map("n", "<leader>gc",  ":Git commit<cr>")
-map("n", "<leader>grm", ":GRemove<cr>")
-map("n", "<leader>gmv", ":GMove<cr>")
+-- git (neogit)
+map("n", "<leader>gs", ":Neogit<cr>")
+map("n", "<leader>gc", ":Neogit commit<cr>")
 
 -- telescope (replaces CtrlP)
 map("n", "<leader>f", ":Telescope find_files<cr>")

@@ -130,8 +130,29 @@ require("lazy").setup({
   -- ── alignment (same as tabular) ────────────────────────────────────────
   { "godlygeek/tabular" },
 
+  -- ── git ────────────────────────────────────────────────────────────────
+  {
+    "NeogitOrg/neogit",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { graph_style = "unicode" },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+        local map = function(keys, func) vim.keymap.set("n", keys, func, { buffer = bufnr }) end
+        map("<leader>hp", gs.preview_hunk)
+        map("<leader>hb", gs.blame_line)
+        map("]h",         gs.next_hunk)
+        map("[h",         gs.prev_hunk)
+        map("<leader>hs", gs.stage_hunk)
+        map("<leader>hr", gs.reset_hunk)
+      end,
+    },
+  },
+
   -- ── tpope classics (all work unchanged in nvim) ────────────────────────
-  { "tpope/vim-fugitive"     },
   { "tpope/vim-repeat"       },
   { "tpope/vim-dispatch"     },
   { "tpope/vim-liquid"       },
