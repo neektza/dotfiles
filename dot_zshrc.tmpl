@@ -89,11 +89,6 @@ bindkey "\e[1;3D" backward-word
 # Ghostty helpers
 [[ -f ~/.config/ghostty/themes.zsh ]] && source ~/.config/ghostty/themes.zsh
 {{- if eq .chezmoi.hostname "hermes-v2" }}
-export GTH_CONTEXT=remote
-{{- else }}
-export GTH_CONTEXT=local
-{{- end }}
-{{- if eq .chezmoi.hostname "hermes-v2" }}
 # Write hint file for nvim from LC_APPEARANCE (forwarded over SSH from macOS).
 # Don't call gth — Ghostty owns the palette, zellij reads OSC 11 from it.
 if [[ -n "${LC_APPEARANCE}" ]]; then
