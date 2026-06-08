@@ -1,7 +1,7 @@
 local M = {}
 
 function M.apply()
-  require("gruvbox").setup({ transparent_mode = false })
+  require("gruvbox").setup({ transparent_mode = true })
   vim.cmd.colorscheme("gruvbox")
 end
 
