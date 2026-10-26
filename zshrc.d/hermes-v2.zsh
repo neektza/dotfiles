@@ -1,6 +1,14 @@
 # Hermes CLI completions
+# Cached: `hermes completion zsh` boots the full agent (incl. ~31 1Password reads),
+# so only regenerate when the completion code changes after a `hermes update`.
 if command -v hermes >/dev/null 2>&1; then
-  eval "$(hermes completion zsh)"
+  _hermes_comp_file="${XDG_CACHE_HOME:-$HOME/.cache}/hermes-completion.zsh"
+  _hermes_comp_src="$HOME/.hermes/hermes-agent/hermes_cli/commands_completion.py"
+  if [[ ! -s "$_hermes_comp_file" || "$_hermes_comp_src" -nt "$_hermes_comp_file" ]]; then
+    hermes completion zsh >| "$_hermes_comp_file" 2>/dev/null
+  fi
+  source "$_hermes_comp_file"
+  unset _hermes_comp_file _hermes_comp_src
 fi
 
 # zoxide: smart cd with frecency (zi for interactive picker)
