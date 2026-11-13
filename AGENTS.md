@@ -66,6 +66,15 @@ Verify available Ghostty themes on the Mac with `ghostty +list-themes`.
 Legacy `themes.zsh` helpers and appearance forwarding are still present;
 their cleanup belongs to the planned local-theme migration.
 
+Hermes Agent natively reads `~/.hermes/`, so its files belong in `dot_hermes/`
+rather than `dot_config/hermes/`. Hermes Agent (separate from herdr) uses
+`dot_hermes/skins/adaptive.yaml`:
+Slate colors on dark terminals and Daylight colors on light terminals. This
+skin has no terminal background override. Select it with `display.skin: adaptive`
+and `display.tui_theme: auto` in each Hermes profile's `config.yaml`.
+Named profiles need `skins/adaptive.yaml` linked to `~/.hermes/skins/adaptive.yaml`;
+Hermes does not search the default profile's skins from named profiles.
+
 ## Conditional deployment
 
 - `~/.config/zellij/` — deployed on hermes-v2 and pwrbook, ignored on other hosts via `.chezmoiignore`
