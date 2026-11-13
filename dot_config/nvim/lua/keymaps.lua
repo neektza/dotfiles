@@ -9,7 +9,7 @@ map("i", "<A-BS>", "<C-W>")
 map("n", "z<space>", "za")
 map("x", "z<space>", "za")
 
--- window navigation handled by zellij-nav.nvim
+-- Window navigation uses Neovim's default Ctrl+W commands.
 
 -- tab switching
 map("n", "<leader>t[", ":tabprev<cr>")
@@ -44,6 +44,11 @@ map("v", "/", "/\\v")
 -- git (neogit)
 map("n", "<leader>gs", ":Neogit<cr>")
 map("n", "<leader>gc", ":Neogit commit<cr>")
+
+-- diffview (for multi-file LLM/Git code reviews)
+map("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "Diffview Open" })
+map("n", "<leader>gD", ":DiffviewClose<cr>", { desc = "Diffview Close" })
+map("n", "<leader>gh", ":DiffviewFileHistory %<cr>", { desc = "Diffview Current File History" })
 
 -- telescope (replaces CtrlP)
 map("n", "<leader>f", ":Telescope find_files<cr>")

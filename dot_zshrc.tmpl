@@ -40,6 +40,9 @@ alias clrf="perl -pi -e 's/\r/\n/g'"
 # Direnv
 eval "$(direnv hook zsh)"
 
+# Generate herdr completions before oh-my-zsh loads compinit (Mac and VPS).
+[[ -f ~/.config/herdr/completions.zsh ]] && source ~/.config/herdr/completions.zsh
+
 # fpath must be set before oh-my-zsh loads compinit
 [[ -d "${HOME}/.zfunc" ]] && fpath=("${HOME}/.zfunc" $fpath)
 
@@ -81,10 +84,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Trackframe completions
 command -v trackframe &>/dev/null && eval "$(trackframe completion zsh)"
-
-# opt+arrow word navigation (ghostty unbinds alt+arrows, macos-option-as-alt sends \e[1;3C/D)
-bindkey "\e[1;3C" forward-word
-bindkey "\e[1;3D" backward-word
 
 # Ghostty helpers
 [[ -f ~/.config/ghostty/themes.zsh ]] && source ~/.config/ghostty/themes.zsh

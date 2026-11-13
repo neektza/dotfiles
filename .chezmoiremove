@@ -1,0 +1,5 @@
+# Configs migrated to ~/.config/git and ~/.config/tmux.
+.gitconfig
+.githelpers
+.tmux.conf
+.tmuxline.conf

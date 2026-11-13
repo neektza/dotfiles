@@ -1,0 +1,2 @@
+# Use herdr's built-in defaults. Ghostty sends Ctrl+B c/1..9 for Cmd+T/1..9.
+onboarding = false

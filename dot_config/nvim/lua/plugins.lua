@@ -47,7 +47,17 @@ require("lazy").setup({
     config = function()
       require("telescope").setup({
         defaults = {
-          file_ignore_patterns = { "_build", "deps", "node_modules", ".git" },
+          file_ignore_patterns = { "_build", "deps", "node_modules", ".git/" },
+        },
+        pickers = {
+          find_files = {
+            hidden = true, -- Search hidden files (.example, .env, etc.)
+          },
+          live_grep = {
+            additional_args = function()
+              return { "--hidden" } -- Search through contents of hidden files too
+            end,
+          },
         },
       })
       require("telescope").load_extension("fzf")
@@ -144,6 +154,23 @@ require("lazy").setup({
     end,
   },
 
+  -- ── render-markdown: inline markdown rendering ──────────────────────────
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ft = { "markdown" },
+    opts = {
+      heading   = { enabled = false },
+      bullet    = { enabled = false },
+      checkbox  = { enabled = false },
+      quote     = { enabled = false },
+      link      = { enabled = false },
+      code      = { enabled = true },
+      table     = { enabled = true },
+      dash      = { enabled = true },
+    },
+  },
+
   -- ── alignment (same as tabular) ────────────────────────────────────────
   { "godlygeek/tabular" },
 
@@ -152,6 +179,19 @@ require("lazy").setup({
     "NeogitOrg/neogit",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { graph_style = "unicode" },
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      enhanced_diff_hl = true, -- Use Neovim's built-in, enhanced diff highlighting
+      view = {
+        default = {
+          -- Layout can be customized; "diff2_horizontal" is standard
+          layout = "diff2_horizontal",
+        },
+      },
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -239,20 +279,6 @@ require("lazy").setup({
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {},
-  },
-
-  -- ── zellij pane navigation ──────────────────────────────────────────────
-  {
-    "swaits/zellij-nav.nvim",
-    lazy = true,
-    event = "VeryLazy",
-    keys = {
-      { "<c-h>", "<cmd>ZellijNavigateLeft<cr>",  { silent = true, desc = "navigate left"  } },
-      { "<c-j>", "<cmd>ZellijNavigateDown<cr>",  { silent = true, desc = "navigate down"  } },
-      { "<c-k>", "<cmd>ZellijNavigateUp<cr>",    { silent = true, desc = "navigate up"    } },
-      { "<c-l>", "<cmd>ZellijNavigateRight<cr>", { silent = true, desc = "navigate right" } },
-    },
     opts = {},
   },
 

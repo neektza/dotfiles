@@ -37,18 +37,30 @@ opt.modelines  = 0
 opt.compatible = false
 opt.mouse      = "a"
 opt.backspace  = { "indent", "eol", "start" }
--- clipboard: OSC 52 (works over SSH with Ghostty, no xclip/xsel needed)
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-  },
-}
+-- macOS uses the native clipboard provider (pbcopy/pbpaste).
+-- On the VPS, copy via OSC 52 but paste from the last local copy/delete.
+-- Clipboard reads can time out through SSH/multiplexers; Cmd+V still pastes
+-- external clipboard text through the terminal without an OSC 52 query.
+if vim.fn.has("macunix") == 0 then
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local contents = { ["+"] = { {}, "v" }, ["*"] = { {}, "v" } }
+  local copy, paste = {}, {}
+  for _, reg in ipairs({ "+", "*" }) do
+    local send = osc52.copy(reg)
+    copy[reg] = function(lines, regtype)
+      contents[reg] = { vim.deepcopy(lines), regtype }
+      send(lines)
+    end
+    paste[reg] = function()
+      return vim.deepcopy(contents[reg])
+    end
+  end
+  vim.g.clipboard = {
+    name = "OSC 52 (copy only)",
+    copy = copy,
+    paste = paste,
+  }
+end
 opt.clipboard = "unnamedplus"
 
 -- wildmenu
