@@ -44,3 +44,28 @@ Neovim currently overrides its undo directory to `~/.config/nvim/tmp/undo` in
 `dot_config/nvim/lua/options.lua`. A future cleanup should restore its native
 state directory (`~/.local/state/nvim/undo` by default) while retaining persistent
 undo history.
+
+## Herdr at VPS boot
+
+`dot_config/systemd/user/herdr.service` is deployed only on `hermes-v2`.
+It starts the default headless herdr session as a systemd user service.
+User lingering must be enabled for startup before login; it is already enabled
+for `neektza` on this VPS.
+
+After applying a changed unit:
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable herdr.service
+```
+
+When no herdr server is already running, start it with
+`systemctl --user start herdr.service`. An existing independently launched server
+cannot be adopted by this service: enable the service and let the next reboot
+start it, rather than stopping live panes just to change their supervisor.
+
+Check it with `systemctl --user status herdr.service` and
+`journalctl --user -u herdr.service -b`.
+Stopping or restarting the service stops its pane processes.
+After a reboot, herdr restores the layout; eligible agent conversations resume
+when a client attaches and provides terminal size and theme context.

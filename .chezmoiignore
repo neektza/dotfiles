@@ -9,3 +9,6 @@ LICENSE
 .config/ghostty/config
 .config/ghostty/profiles.zsh
 {{ end }}
+{{ if ne .chezmoi.hostname "hermes-v2" }}
+.config/systemd/user/herdr.service
+{{ end }}

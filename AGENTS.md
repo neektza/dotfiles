@@ -79,3 +79,7 @@ Hermes does not search the default profile's skins from named profiles.
 
 - `~/.config/zellij/` — deployed on hermes-v2 and pwrbook, ignored on other hosts via `.chezmoiignore`
 - `~/.config/ghostty/config` — deployed only on pwrbook (macOS); legacy helpers are still shared
+- `~/.config/systemd/user/herdr.service` — deployed only on hermes-v2; enables
+  boot startup of the default session with user lingering. Do not stop an
+  existing independently launched server just to put it under systemd; enable
+  the unit for the next boot. Agent restore waits for a client attachment.
