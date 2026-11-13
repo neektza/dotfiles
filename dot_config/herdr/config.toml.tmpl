@@ -1,7 +1,10 @@
 # Use herdr's built-in defaults. Ghostty sends Ctrl+B c/1..9 for Cmd+T/1..9.
 onboarding = false
 {{ if eq .chezmoi.hostname "pwrbook" }}
-# The Mac client follows Ghostty, including when viewing remote workspaces.
+# Follow Ghostty's macOS appearance changes, including in remote workspaces.
 [theme]
-name = "terminal"
+name = "gruvbox"
+auto_switch = true
+dark_name = "gruvbox"
+light_name = "gruvbox-light"
 {{ end }}

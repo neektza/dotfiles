@@ -55,8 +55,10 @@ chezmoi apply --force
 Terminal theme selection belongs on pwrbook: Ghostty and the local herdr client.
 Herdr connects to Hermes as a saved remote machine. Do not add remote palette
 switching or require Ghostty and Zellij theme names to match.
-`dot_config/herdr/config.toml.tmpl` selects the `terminal` theme only on pwrbook
-so the local herdr UI follows Ghostty's ANSI palette; Hermes has no theme override.
+`dot_config/herdr/config.toml.tmpl` enables automatic light/dark switching only
+on pwrbook, using herdr's `gruvbox` and `gruvbox-light` themes to match Ghostty.
+The local client follows the appearance reported by Ghostty; Hermes has no theme
+override. Do not disable `auto_switch` when changing the local UI palettes.
 
 Current Ghostty themes: dark=Gruvbox Dark, light=Gruvbox Light. A higher-contrast
 light theme has been researched but has not been selected or applied yet.
