@@ -15,7 +15,7 @@ fi
 eval "$(zoxide init zsh)"
 
 . "$HOME/.local/bin/env"
-export PATH=$PATH:$HOME/.hermes/node/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/.hermes/node/bin
 
 # PostgreSQL DB Aliases
 alias db-tracks='psql "postgresql://postgres:postgres@localhost:5432/vbt_tracks?sslmode=disable"'

@@ -11,6 +11,11 @@ overrides, wrapper commands, or compatibility symlinks just to relocate configs.
 
 Chezmoi maps `dot_` to a leading dot and renders `.tmpl` files before deployment.
 
+The zsh template uses chezmoi's actual source directory to locate
+`zshrc.d/<hostname>.zsh`; the repository does not have to live at `~/dotfiles`.
+It adds `~/.local/bin` and `~/bin` to `PATH` before loading completions or host
+config, so user-installed commands such as `hermes` work in fresh shells.
+
 | Application | Source in this repo | Native destination |
 | --- | --- | --- |
 | [Git](https://git-scm.com/docs/git-config#FILES) | `dot_config/git/config.tmpl` | `~/.config/git/config` |
